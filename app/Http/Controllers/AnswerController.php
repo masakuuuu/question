@@ -12,7 +12,7 @@ class AnswerController extends Controller
 {
     public function answer(Request $request)
     {
-        return view('answer.answer',
+        return view('answer',
             [
                 'questionInfo' => $request->questionInfo,
                 'choiceInfo' => $request->choiceInfo,

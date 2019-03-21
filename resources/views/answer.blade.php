@@ -8,9 +8,7 @@
 
 @section('content')
 
-    @include('components.questionView')
-
-    @include('components.snsTransmission')
+    @include('components.answer')
 
 @endsection
 
