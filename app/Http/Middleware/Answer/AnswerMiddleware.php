@@ -25,11 +25,10 @@ class AnswerMiddleware
         // URLハッシュから質問情報を取得
         $questionInfo = AnswerLogicFacade::getQuestionData($request->url_hash);
 
+        $questionInfo['limit'] = date('Y年m月d日', strtotime($questionInfo['limit']));
+
         // 質問iDをキーにして選択肢情報を取得
         $choiceInfo = AnswerLogicFacade::getChoiceData($questionInfo->id);
-
-        // 投票結果を取得
-        $answerInfo = AnswerLogicFacade::getAnswerData($questionInfo->id);
 
         // 解答済みチェック
         $isAnswered = AnswerLogicFacade::isAnswered($questionInfo->id, $request->session()->getId());
@@ -37,7 +36,6 @@ class AnswerMiddleware
 
         $request->merge(['questionInfo' => $questionInfo]);
         $request->merge(['choiceInfo' => $choiceInfo]);
-        $request->merge(['answerInfo' => $answerInfo]);
         $request->merge(['isAnswered' => $isAnswered]);
 
 
