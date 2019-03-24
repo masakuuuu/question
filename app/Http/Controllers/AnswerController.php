@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Answers;
 use Illuminate\Http\Request;
 use App\Http\Requests\AnswerRequest;
+use App\Http\Requests\ViewAnsweredUserRequest;
 
 use App\Facades\AnswerLogicFacade;
 
@@ -102,5 +103,11 @@ class AnswerController extends Controller
                 'answerInfo' => $answerInfo
             ]
         );
+    }
+
+    public function viewAnsweredUser(Request $request){
+        return [
+            'AnsweredUserData' => $request->answeredUserData
+        ];
     }
 }

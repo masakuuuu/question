@@ -55,10 +55,26 @@ class AnswerLogic
         // 投票結果を取得
         $param = ['question_id' => $aQuestionId];
         return DB::select('
-              SELECT foo.choice_id, foo.choice_text, COALESCE(foo.votes, 0) AS votes FROM (
-                  SELECT t1.id AS choice_id, MAX(t1.choice_text) AS choice_text, SUM(t2.votes) AS votes FROM choices t1 LEFT OUTER JOIN answers t2 ON t1.id = t2.choice_id WHERE t1.question_id = :question_id GROUP BY t1.id
-              ) AS foo;', $param);
+              SELECT answer_result.choice_id, answer_result.choice_text, COALESCE(answer_result.votes, 0) AS votes ,answer_result.user_count
+FROM (
+       SELECT t1.id AS choice_id, MAX(t1.choice_text) AS choice_text, SUM(t2.votes) AS votes ,count(t2.user_id) AS user_count
+       FROM choices t1
+              LEFT OUTER JOIN answers t2 ON t1.id = t2.choice_id
+       WHERE t1.question_id = :question_id and t2.votes > 0
+       GROUP BY t1.id
+     ) AS answer_result;', $param);
 
+    }
+
+    /**
+     * 選択肢IDから回答済みユーザのデータを取得します
+     *
+     * @param int $aChoiceId 選択肢ID
+     * @return mixed 解答済みデータ
+     */
+    public function getAnsweredUserData(int $aChoiceId)
+    {
+        return Answers::where('choice_id', $aChoiceId)->get();
     }
 
     /**
@@ -67,8 +83,9 @@ class AnswerLogic
      * @param String $aUrl_hash　URLハッシュ値
      * @return bool 回答可能かどうか
      */
-    public function checkQuestionLimit(String $aUrl_hash){
-        if(Questions::where('url_hash', $aUrl_hash)->where('limit', '>', date("Y-m-d"))->get()->first()){
+    public function checkQuestionLimit(String $aUrl_hash)
+    {
+        if (Questions::where('url_hash', $aUrl_hash)->where('limit', '>', date("Y-m-d"))->get()->first()) {
             return true;
         }
         return false;

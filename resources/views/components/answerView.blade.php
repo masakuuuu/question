@@ -23,7 +23,8 @@
                     <tr>
                         <th>選択肢</th>
                         <th>投票数</th>
-                        <th>ユーザ分布</th>
+                        <th>ユーザ数</th>
+                        <th>分布</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -37,6 +38,10 @@
                                 {{$answer->votes}}
                             </td>
                             <td>
+                                {{$answer->user_count}}
+                            </td>
+                            <td>
+                                @include('components.answerUserList')
                             </td>
                         </tr>
                     @endforeach

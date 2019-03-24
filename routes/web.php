@@ -18,6 +18,7 @@ use App\Http\Middleware\Question\EditChoiceMiddleware;
 use App\Http\Middleware\Answer\AnswerMiddleware;
 use App\Http\Middleware\Answer\AnswerExeMiddleware;
 use App\Http\Middleware\Answer\ViewAnswerMiddleware;
+use App\Http\Middleware\Answer\ViewAnswerdUserMiddleware;
 
 // トップ画面
 Route::get('/','HomeController@index');
@@ -38,3 +39,4 @@ Route::get('View','QuestionController@view')->middleware(ViewQuestionMiddleware:
 Route::get('Answer','AnswerController@answer')->middleware(AnswerMiddleware::class);
 Route::post('AnswerExe','AnswerController@answerExe')->middleware(AnswerMiddleware::class)->middleware(AnswerExeMiddleware::class);
 Route::get('ViewAnswer','AnswerController@viewAnswer')->middleware(ViewAnswerMiddleware::class);
+Route::post('ViewAnsweredUserList','AnswerController@viewAnsweredUser')->middleware(ViewAnswerdUserMiddleware::class);
