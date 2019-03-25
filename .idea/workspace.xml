@@ -1,33 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4f402828-13fe-494d-ad1d-88b21e3bcabf" name="Default Changelist" comment="アンケート回答画面の修正&#10;  - Ajax通信によるデータの取得&#10;  - ローディング">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap-grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/bootstrap-grid.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap-grid.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/bootstrap-grid.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap-grid.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/bootstrap-grid.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap-grid.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/bootstrap-reboot.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap-reboot.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/bootstrap-reboot.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap-reboot.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/bootstrap-reboot.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/bootstrap-reboot.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap-reboot.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/bootstrap.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/bootstrap.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/bootstrap.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/bootstrap.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/bootstrap.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/bootstrap.bundle.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/bootstrap.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/bootstrap.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/bootstrap.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/bootstrap.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/answerView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/answerView.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/answerUserList.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/answerUserList.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/answerView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/answerView.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/header.blade.php" afterDir="false" />
+    <list default="true" id="4f402828-13fe-494d-ad1d-88b21e3bcabf" name="Default Changelist" comment="アンケート回答画面の修正&#10;  - bootstrap git管理">
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-grid.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bootstrap.min.js.map" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -129,8 +123,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/components/header.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="16" column="37" lean-forward="true" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+            <state relative-caret-position="103">
+              <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -572,17 +566,17 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\question\app\Http\ViewComposers" />
-      <recent name="C:\xampp\htdocs\question\app\Facades" />
-      <recent name="C:\xampp\htdocs\question\resources\views\answer" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\question\public\css" />
       <recent name="C:\xampp\htdocs\question\public\js" />
       <recent name="C:\xampp\htdocs\question\app\Http\Middleware\Answer" />
       <recent name="C:\xampp\htdocs\question\app\Http\Middleware\Question" />
       <recent name="C:\xampp\htdocs\question\app\Providers\Question" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\question\app\Http\ViewComposers" />
+      <recent name="C:\xampp\htdocs\question\app\Facades" />
+      <recent name="C:\xampp\htdocs\question\resources\views\answer" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -656,7 +650,7 @@
       <workItem from="1553447104562" duration="119000" />
       <workItem from="1553509793906" duration="8073000" />
       <workItem from="1553521656385" duration="369000" />
-      <workItem from="1553522053069" duration="542000" />
+      <workItem from="1553522053069" duration="811000" />
     </task>
     <task id="LOCAL-00001" summary="アンケート回答画面の修正">
       <created>1553181938153</created>
@@ -679,11 +673,25 @@
       <option name="project" value="LOCAL" />
       <updated>1553447136943</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="アンケート回答画面の修正&#10;  - Ajax通信によるデータの取得&#10;  - ローディング">
+      <created>1553522599025</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1553522599025</updated>
+    </task>
+    <task id="LOCAL-00005" summary="アンケート回答画面の修正&#10;  - Ajax通信によるデータの取得&#10;  - ローディング">
+      <created>1553522729428</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1553522729428</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="219154000" />
+    <option name="totallyTimeSpent" value="219423000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -695,10 +703,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-8" width="1040" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15884861" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30408162" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Console" order="0" sideWeight="0.49733475" weight="0.45720476" />
@@ -711,9 +719,9 @@
       <window_info anchor="bottom" id="TODO" order="7" sideWeight="0.49520257" weight="0.49729145" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" sideWeight="0.4978678" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.49093816" visible="true" weight="0.32719395" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49081632" visible="true" weight="0.4942717" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49693877" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5090618" side_tool="true" visible="true" weight="0.32719395" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50918365" side_tool="true" visible="true" weight="0.4942717" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -790,7 +798,8 @@
     <MESSAGE value="アンケート回答画面のJavaScript修正と結果画面の作成" />
     <MESSAGE value="アンケート回答画面の修正&#10;  - ダイアログの追加&#10;  - Ajax通信によるデータの取得" />
     <MESSAGE value="アンケート回答画面の修正&#10;  - Ajax通信によるデータの取得&#10;  - ローディング" />
-    <option name="LAST_COMMIT_MESSAGE" value="アンケート回答画面の修正&#10;  - Ajax通信によるデータの取得&#10;  - ローディング" />
+    <MESSAGE value="アンケート回答画面の修正&#10;  - bootstrap git管理" />
+    <option name="LAST_COMMIT_MESSAGE" value="アンケート回答画面の修正&#10;  - bootstrap git管理" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1423,8 +1432,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/components/header.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="16" column="37" lean-forward="true" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+        <state relative-caret-position="103">
+          <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
         </state>
       </provider>
     </entry>
