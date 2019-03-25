@@ -12,6 +12,8 @@
 
     @include('components.snsTransmission')
 
+    @include('components.answerUserList')
+
 @endsection
 
 @section('footer')

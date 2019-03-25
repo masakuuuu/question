@@ -23,13 +23,13 @@
                     </a>
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li class="uk-active"><a href="#">Home</a></li>
-                            <li><a href="Create">Create</a></li>
-                            <li class="uk-nav-header">Account Menu</li>
-                            <li><a href="#">Setting</a></li>
-                            <li><a href="#">Logout</a></li>
+                            <li class="uk-nav-header">メニュー</li>
+                            <li class="uk-active"><a href="#">ホーム</a></li>
+                            <li><a href="Create">新規作成</a></li>
+                            <li><a href="Create">閲覧</a></li>
+                            <li><a href="#">設定</a></li>
                             <li class="uk-nav-divider"></li>
-                            <li><a href="#">Info</a></li>
+                            <li><a href="#">ログアト</a></li>
                         </ul>
                     </div>
                 </li>

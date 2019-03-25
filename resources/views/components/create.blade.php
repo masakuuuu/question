@@ -1,15 +1,15 @@
 <script>
-    $(function(){
-        $('#is_edit').on('click', function(){
+    $(function () {
+        $('#is_edit').on('click', function () {
             $('#password_form').toggle();
         });
 
-        $('#point').on('input', function(){
+        $('#point').on('input', function () {
             $('#point_view').text($('#point').val());
         })
     });
 
-    function addChoices(){
+    function addChoices() {
         $('#choices').trigger('create').append('<div class="uk-form-controls">\n' +
             '                     <input class="uk-input" type="text" name="choices[]"\n' +
             '                            placeholder="Some text...">\n' +
@@ -47,7 +47,8 @@
 
                 <div class="uk-margin">
                     <label class="uk-form-label uk-text-bold">選択肢<a href="#"
-                                                                                class="uk-margin-left uk-text-small" onclick="addChoices()">追加</a></label>
+                                                                    class="uk-margin-left uk-text-small"
+                                                                    onclick="addChoices()">追加</a></label>
                     <div id="choices">
                         <div class="uk-form-controls">
                             <input class="uk-input" type="text" name="choices[]"
@@ -93,7 +94,8 @@
                 <div class="uk-margin" id="password_form" style="display: none">
                     <label class="uk-form-label uk-text-bold" for="password">編集パスワード</label>
                     <div class="uk-form-controls">
-                        <input class="uk-input" id="password" type="password" name="password" placeholder="Some text...">
+                        <input class="uk-input" id="password" type="password" name="password"
+                               placeholder="Some text...">
                     </div>
                 </div>
 

@@ -6,6 +6,18 @@
         });
     });
     function getUserList(choiceId){
+        // 表示データの準備
+        //// ユーザデータのリセット
+        $('#answeredUserDataList').empty();
+        $('#answeredUserDataTable').hide();
+
+        //// ローディングの表示
+        $('.modal-body').trigger('create').append('<div class="d-flex justify-content-center" id="loading">\n' +
+        '<div class="spinner-border text-primary" role="status">\n' +
+        '<span class="sr-only">Loading...</span>\n' +
+        '</div>\n' +
+        '</div>');
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
@@ -18,15 +30,19 @@
             data: {'choice_id': choiceId}
         })
 
-            .done(function(answeredUserData) {
-                // obj = JSON.parse(data);
-                console.log(answeredUserData);
-                for (var key in answeredUserData) {
-                    console.log(answeredUserData[key]);
-                    for(var data in answeredUserData[key]){
-                        console.log(data);
-                        console.log(data['user_name']);
-                    }
+            .done(function(data) {
+
+                $('#answeredUserDataTable').show();
+
+                //// ローディングの表示
+                $('#loading').remove();
+
+                for(var index in data['AnsweredUserData']){
+                    $('#answeredUserDataList').trigger('create').append('<tr>\n' +
+                        '                     <td>' + data["AnsweredUserData"][index].user_name + '</td>"\n' +
+                        '                     <td>' + data["AnsweredUserData"][index].votes + '</td>"\n' +
+                        '                     <td>' + data["AnsweredUserData"][index].updated_at + '</td>"\n' +
+                        '                  </tr>');
                 }
             })
 
@@ -35,9 +51,6 @@
             });
     }
 </script>
-
-<!-- icon trigger modal -->
-<span uk-icon="search" data-toggle="modal" data-target="#exampleModalCenter" onclick="getUserList( {{ $answer->choice_id }} )"></span>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
@@ -52,14 +65,19 @@
                 </button>
             </div>
             <div class="modal-body">
-                <label>名前</label>
-                <input type="text" v-model="params.name">
-                <br>
-                <label>メールアドレス</label>
-                <input type="text" v-model="params.email">
-                <br>
-                <label>内容</label>
-                <textarea v-model="params.body"></textarea>
+
+                <table class="uk-table uk-table-small uk-table-divider" id="answeredUserDataTable">
+                    <thead>
+                    <tr>
+                        <th>ユーザ名</th>
+                        <th>投票数</th>
+                        <th>投票日時</th>
+                    </tr>
+                    </thead>
+                    <tbody id="answeredUserDataList">
+                    </tbody>
+                </table>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">

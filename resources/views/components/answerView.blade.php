@@ -41,7 +41,7 @@
                                 {{$answer->user_count}}
                             </td>
                             <td>
-                                @include('components.answerUserList')
+                                <span uk-icon="search" data-toggle="modal" data-target="#exampleModalCenter" onclick="getUserList( {{ $answer->choice_id }} )"></span>
                             </td>
                         </tr>
                     @endforeach
