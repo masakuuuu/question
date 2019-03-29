@@ -181,6 +181,7 @@ return [
         App\Providers\Home\HomeServiceProvider::class,
         App\Providers\Question\QuestionServiceProvider::class,
         App\Providers\Answer\AnswerServiceProvider::class,
+        App\Providers\User\UserServiceProvider::class,
 
     ],
 
@@ -232,6 +233,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'QuestionLogic' => App\Facades\QuestionLogicFacade::class,
         'AnswerLogic' => App\Facades\AnswerLogicFacade::class,
+        'UserLogic' => App\Facades\UserLogicFacade::class,
 
     ],
 

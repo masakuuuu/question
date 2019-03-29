@@ -28,7 +28,7 @@ class QuestionRequest extends FormRequest
     public function rules()
     {
         return [
-            'auther_name' => 'required',
+//            'auther_name' => 'required',
             'question_title' => 'required',
             'question_detail' => 'required',
             'choices.*' => 'required',
@@ -46,7 +46,7 @@ class QuestionRequest extends FormRequest
     public function messages()
     {
         return [
-            'auther_name.required' => '投稿者名を入力してください',
+//            'auther_name.required' => '投稿者名を入力してください',
             'question_title.required' => 'タイトルを入力してください',
             'question_detail.required' => '概要を入力してください',
             'choices.*.required' => '選択肢を入力してください',

@@ -20,6 +20,10 @@ use App\Http\Middleware\Answer\AnswerExeMiddleware;
 use App\Http\Middleware\Answer\ViewAnswerMiddleware;
 use App\Http\Middleware\Answer\ViewAnswerdUserMiddleware;
 
+// ユーザ登録画面
+Route::get('OAuth','TwitterOAuthController@oAuth');
+Route::get('Callback','TwitterOAuthController@callback');
+
 // トップ画面
 Route::get('/','HomeController@index');
 
