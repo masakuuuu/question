@@ -1,5 +1,8 @@
 <script>
     $(function () {
+
+        $('#point_view').text($('#point').val());
+
         $('#is_edit').on('click', function () {
             $('#password_form').toggle();
         });
@@ -7,26 +10,33 @@
         $('#point').on('input', function () {
             $('#point_view').text($('#point').val());
         })
+
+        $('#add').on('click', function()
+        {
+            $('#choices').trigger('create').append('<div class="uk-form-controls">\n' +
+                '                     <input class="uk-input" type="text" name="choices[]"\n' +
+                '                            placeholder="Some text...">\n' +
+                '                  </div>');
+            return false;
+        })
     });
 
-    function addChoices() {
-        $('#choices').trigger('create').append('<div class="uk-form-controls">\n' +
-            '                     <input class="uk-input" type="text" name="choices[]"\n' +
-            '                            placeholder="Some text...">\n' +
-            '                  </div>');
-    }
 </script>
 
 <div class="uk-section uk-section-muted">
     <div class="uk-flex uk-flex-center">
 
-        @foreach($errors->all() as $error)
-            <div>{{ $error }}</div>
-        @endforeach
-
         <form class="uk-form-stacked uk-margin-large" action="CreateExe" method="post">
 
             <fieldset class="uk-fieldset uk-width-xlarge">
+
+{{--                @if($msg)--}}
+{{--                    <div>{{ $msg }}</div>--}}
+{{--                @endif--}}
+
+                @foreach($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                @endforeach
 
                 {{ csrf_field() }}
                 <div class="uk-margin">
@@ -40,19 +50,31 @@
                 <div class="uk-margin">
                     <label class="uk-form-label uk-text-bold" for="detail">概要</label>
                     <div class="uk-form-controls">
-                        <textarea id="detail" class="uk-textarea" rows="5" placeholder="Textarea" name="question_detail"
-                                  value="{{old('question_detail')}}"></textarea>
+                        <textarea id="detail" class="uk-textarea" rows="5" placeholder="概要説明"
+                                  name="question_detail">{{old('question_detail')}}</textarea>
                     </div>
                 </div>
 
                 <div class="uk-margin">
                     <label class="uk-form-label uk-text-bold">選択肢<a href="#"
                                                                     class="uk-margin-left uk-text-small"
-                                                                    onclick="addChoices()">追加</a></label>
+                                                                    id = "add"
+                                                                    >追加</a></label>
                     <div id="choices">
                         <div class="uk-form-controls">
-                            <input class="uk-input" type="text" name="choices[]"
-                                   value="{{old('choices[]')}}" placeholder="Some text...">
+
+                            @if(old('choices'))
+                                @foreach(old('choices') as $key => $choice)
+                                    @if($choice != "")
+                                        <input class="uk-input" type="text" name="choices[]"
+                                               value="{{$choice}}" placeholder="Some text...">
+                                    @endif
+                                @endforeach
+                            @else
+                                <input class="uk-input" type="text" name="choices[]" placeholder="Some text...">
+                                <input class="uk-input" type="text" name="choices[]" placeholder="Some text...">
+                            @endif
+
                         </div>
                     </div>
                 </div>
@@ -60,8 +82,14 @@
                 <div class="uk-margin">
                     <label class="uk-form-label uk-text-bold" for="point">持ち点</label>
                     <p id="point_view">1</p>
-                    <input class="uk-range" id="point" type="range" value="1" min="1" max="100" step="1"
-                           name="point" value="{{old('point')}}">
+                    @if(old('point'))
+                        <input class="uk-range" id="point" type="range" value="{{old('point')}}" min="1" max="100"
+                               step="1"
+                               name="point">
+                    @else
+                        <input class="uk-range" id="point" type="range" value="1" min="1" max="100" step="1"
+                               name="point">
+                    @endif
                 </div>
 
                 <div class="uk-margin">
@@ -73,7 +101,7 @@
                 </div>
 
                 <div class="uk-margin">
-                    <label class="uk-form-label uk-text-bold" for="limit">回答期限</label>
+                    <label class="uk-form-label uk-text-bold" for="limit">締切日</label>
                     <div class="uk-form-controls">
                         <input class="uk-input" id="limit" type="date" name="limit"
                                value="{{old('limit')}}" placeholder="Some text...">

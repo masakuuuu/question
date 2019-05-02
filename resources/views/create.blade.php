@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Index')
+@section('title', '新規作成')
 
 @section('include')
 

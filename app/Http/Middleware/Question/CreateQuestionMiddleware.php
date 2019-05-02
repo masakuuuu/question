@@ -46,6 +46,10 @@ class CreateQuestionMiddleware
         // 選択肢テーブルの中身を生成
         $choiceArray = [];
         foreach ($form['choices'] as $key => $value) {
+            // 空文字登録の場合はスキップさせる
+            if($value == ""){
+                continue;
+            }
             array_push($choiceArray, [
                 'choice_text' => $value,
             ]);

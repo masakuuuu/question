@@ -35,7 +35,7 @@ class QuestionLogic
                 from questions t1
                        inner join answers t2
                                   on t1.id = t2.question_id
-                where t2.created_at > current_date - 1 and t1.limit > current_date
+                where t2.created_at > current_date - 1 and t1.limit > current_date and t1.enable
                 group by t1.id
                 order by count';
 
@@ -51,7 +51,7 @@ class QuestionLogic
                 from questions t1
                        inner join answers t2
                                   on t1.id = t2.question_id
-                where t1.limit > current_date
+                where t1.limit > current_date and t1.enable
                 group by t1.id
                 order by count';
             $questionData = DB::select($sql);
