@@ -54,8 +54,8 @@ class QuestionRequest extends FormRequest
             'limit.required' => '締切日を入力してください',
             'edit_password.required_with' => '編集用パスワードを入力してください',
             'point.required' => '投票数を入力してください',
-            'point.numeric' => '投票数は半角数字で入力してください',
-            'point.between' => '投票数は1～100で入力してください',
+            'point.numeric' => '持ち点は半角数字で入力してください',
+            'point.between' => '持ち点は1～100で入力してください',
             'choiceInfo.min' => '選択肢は最低でも２件以上設定してください',
         ];
     }

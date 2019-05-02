@@ -1,14 +1,14 @@
 <script>
     $(function () {
 
-        $('#point_view').text($('#point').val());
+        $('#point_view').val($('#point').val());
 
         $('#is_edit').on('click', function () {
             $('#password_form').toggle();
         });
 
         $('#point').on('input', function () {
-            $('#point_view').text($('#point').val());
+            $('#point_view').val($('#point').val());
         })
 
         $('#add').on('click', function()
@@ -65,9 +65,12 @@
 
                             @if(old('choices'))
                                 @foreach(old('choices') as $key => $choice)
+                                    {{ count(old('choices')) }}
                                     @if($choice != "")
                                         <input class="uk-input" type="text" name="choices[]"
                                                value="{{$choice}}" placeholder="Some text...">
+                                    @elseif(count(old('choices')) <= 2)
+                                        <input class="uk-input" type="text" name="choices[]" placeholder="Some text...">
                                     @endif
                                 @endforeach
                             @else
@@ -81,14 +84,12 @@
 
                 <div class="uk-margin">
                     <label class="uk-form-label uk-text-bold" for="point">持ち点</label>
-                    <p id="point_view">1</p>
+                    <input class="uk-margin-bottom uk-input" type="text" name="point" id="point_view" value="{{old('point')}}">
                     @if(old('point'))
                         <input class="uk-range" id="point" type="range" value="{{old('point')}}" min="1" max="100"
-                               step="1"
-                               name="point">
+                               step="1">
                     @else
-                        <input class="uk-range" id="point" type="range" value="1" min="1" max="100" step="1"
-                               name="point">
+                        <input class="uk-range" id="point" type="range" value="1" min="1" max="100" step="1">
                     @endif
                 </div>
 
