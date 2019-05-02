@@ -2,6 +2,9 @@
     $(function () {
 
         $('#point_view').val($('#point').val());
+        if($('#is_edit').prop('checked')){
+            $('#password_form').show();
+        }
 
         $('#is_edit').on('click', function () {
             $('#password_form').toggle();
@@ -29,10 +32,6 @@
         <form class="uk-form-stacked uk-margin-large" action="CreateExe" method="post">
 
             <fieldset class="uk-fieldset uk-width-xlarge">
-
-{{--                @if($msg)--}}
-{{--                    <div>{{ $msg }}</div>--}}
-{{--                @endif--}}
 
                 @foreach($errors->all() as $error)
                     <div>{{ $error }}</div>
@@ -65,7 +64,6 @@
 
                             @if(old('choices'))
                                 @foreach(old('choices') as $key => $choice)
-                                    {{ count(old('choices')) }}
                                     @if($choice != "")
                                         <input class="uk-input" type="text" name="choices[]"
                                                value="{{$choice}}" placeholder="Some text...">

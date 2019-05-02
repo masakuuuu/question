@@ -20,14 +20,6 @@ class QuestionController extends Controller
     public function createExe(QuestionRequest $request)
     {
         // アンケートの登録処理
-
-        // 編集可能状態の場合はパスワードの入力チェック
-        if ($request->questionInfo['is_edit']) {
-            if (!$request->questionInfo['edit_password']) {
-                return view("create", ['msg' => '編集用パスワードを入力してください']);
-            }
-        }
-
         $questions = new Questions;
         $questions->fill($request->questionInfo)->save();
 

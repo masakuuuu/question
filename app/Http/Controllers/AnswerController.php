@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Answers;
 use Illuminate\Http\Request;
 use App\Http\Requests\AnswerRequest;
-use App\Http\Requests\ViewAnsweredUserRequest;
 
 use App\Facades\AnswerLogicFacade;
 
@@ -19,7 +18,7 @@ class AnswerController extends Controller
      */
     public function answer(Request $request)
     {
-        if ($request->isAnswered) {
+        if ($request->isAnswered || !$request->questionLimit) {
             // 解答済みのアンケートの場合はアンケート結果画面を表示する
             return $this->viewAnswer($request);
         } else {
@@ -52,7 +51,7 @@ class AnswerController extends Controller
 
         // 回答期限チェック
         if (!$request->questionLimit) {
-            return $this->answer($request);
+            return $this->viewAnswer($request);
         }
 
         // 投票数の条件チェック

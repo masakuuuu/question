@@ -21,10 +21,10 @@
                 <table class="uk-table uk-table-hover uk-table-divider">
                     <thead>
                     <tr>
-                        <th>選択肢</th>
-                        <th>投票数</th>
-                        <th>ユーザ数</th>
-                        <th>分布</th>
+                        <th class="uk-text-center">選択肢</th>
+                        <th class="uk-text-center">投票数</th>
+                        <th class="uk-text-center">ユーザ数</th>
+                        <th class="uk-text-center">分布</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -34,14 +34,16 @@
                             <td>
                                 {{$answer->choice_text}}
                             </td>
-                            <td>
+                            <td class="uk-text-right">
                                 {{$answer->votes}}
                             </td>
-                            <td>
+                            <td class="uk-text-right">
                                 {{$answer->user_count}}
                             </td>
-                            <td>
-                                <span uk-icon="search" data-toggle="modal" data-target="#exampleModalCenter" onclick="getUserList( {{ $answer->choice_id }} )"></span>
+                            <td class="uk-text-center">
+                                @if($answer->user_count > 0)
+                                    <span uk-icon="search" data-toggle="modal" data-target="#exampleModalCenter" onclick="getUserList( {{ $answer->choice_id }} )"></span>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

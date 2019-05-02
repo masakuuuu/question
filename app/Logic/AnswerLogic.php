@@ -60,7 +60,7 @@ FROM (
        SELECT t1.id AS choice_id, MAX(t1.choice_text) AS choice_text, SUM(t2.votes) AS votes ,count(t2.user_id) AS user_count
        FROM choices t1
               LEFT OUTER JOIN answers t2 ON t1.id = t2.choice_id
-       WHERE t1.question_id = :question_id and t2.votes > 0
+       WHERE t1.question_id = :question_id
        GROUP BY t1.id
      ) AS answer_result;', $param);
 
@@ -107,7 +107,18 @@ FROM (
             $isAnswered = true;
         }
         return $isAnswered;
+    }
 
+    /**
+     * アンケートの回答者数を取得します
+     *
+     * @param int $aQuestionId 質問ID
+     * @return int 回答者数
+     */
+    public function getAnseredUserNum(int $aQuestionId): int
+    {
+        $answerInfo = DB::select('SELECT COUNT(DISTINCT(user_id)) AS user_uum FROM answers WHERE question_id = ;id', ['id' => $aQuestionId]);
+        return $answerInfo['user_num'];
     }
 
 }
