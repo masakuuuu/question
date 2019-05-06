@@ -42,15 +42,14 @@
                     <label class="uk-form-label uk-text-bold" for="title">タイトル</label>
                     <div class="uk-form-controls">
                         <input class="uk-input" id="title" type="text" name="question_title"
-                               value="{{old('question_title')}}" placeholder="Some text...">
+                               value="{{old('question_title')}}">
                     </div>
                 </div>
 
                 <div class="uk-margin">
                     <label class="uk-form-label uk-text-bold" for="detail">概要</label>
                     <div class="uk-form-controls">
-                        <textarea id="detail" class="uk-textarea" rows="5" placeholder="概要説明"
-                                  name="question_detail">{{old('question_detail')}}</textarea>
+                        <textarea id="detail" class="uk-textarea" rows="5" name="question_detail">{{old('question_detail')}}</textarea>
                     </div>
                 </div>
 
@@ -66,14 +65,14 @@
                                 @foreach(old('choices') as $key => $choice)
                                     @if($choice != "")
                                         <input class="uk-input" type="text" name="choices[]"
-                                               value="{{$choice}}" placeholder="Some text...">
+                                               value="{{$choice}}">
                                     @elseif(count(old('choices')) <= 2)
-                                        <input class="uk-input" type="text" name="choices[]" placeholder="Some text...">
+                                        <input class="uk-input" type="text" name="choices[]">
                                     @endif
                                 @endforeach
                             @else
-                                <input class="uk-input" type="text" name="choices[]" placeholder="Some text...">
-                                <input class="uk-input" type="text" name="choices[]" placeholder="Some text...">
+                                <input class="uk-input" type="text" name="choices[]">
+                                <input class="uk-input" type="text" name="choices[]">
                             @endif
 
                         </div>
@@ -95,7 +94,7 @@
                     <label class="uk-form-label uk-text-bold" for="autherName">投稿者名</label>
                     <div class="uk-form-controls">
                         <input class="uk-input" id="autherName" type="text" name="auther_name"
-                               value="{{old('auther_name')}}" placeholder="Some text...">
+                               value="{{old('auther_name')}}" placeholder="名無しさん">
                     </div>
                 </div>
 
@@ -103,7 +102,7 @@
                     <label class="uk-form-label uk-text-bold" for="limit">締切日</label>
                     <div class="uk-form-controls">
                         <input class="uk-input" id="limit" type="date" name="limit"
-                               value="{{old('limit')}}" placeholder="Some text...">
+                               value="{{old('limit')}}">
                     </div>
                 </div>
 
@@ -121,8 +120,7 @@
                 <div class="uk-margin" id="password_form" style="display: none">
                     <label class="uk-form-label uk-text-bold" for="password">編集パスワード</label>
                     <div class="uk-form-controls">
-                        <input class="uk-input" id="password" type="password" name="password"
-                               placeholder="Some text...">
+                        <input class="uk-input" id="password" type="password" name="password">
                     </div>
                 </div>
 

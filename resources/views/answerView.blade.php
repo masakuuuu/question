@@ -14,6 +14,10 @@
 
     @include('components.answerUserList')
 
+    @include('components.commentList')
+
+    @include('components.sendComment')
+
 @endsection
 
 @section('footer')

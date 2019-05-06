@@ -11,7 +11,10 @@ namespace App\Logic;
 use App\Answers;
 use App\Choices;
 use App\Questions;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Void_;
 
 /**
  * Class AnswerLogic
@@ -121,4 +124,32 @@ FROM (
         return $answerInfo['user_num'];
     }
 
+    /**
+     * アンケート回答用テーブルとコメントテーブルを作成します
+     * テーブル名は質問IDで分割します
+     *
+     * @param int $aQuestionId 質問ID
+     */
+    public function createAnswerTable(int $aQuestionId): void
+    {
+        // 回答テーブルの作成
+        Schema::create('answers_' . $aQuestionId, function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('choice_id');
+            $table->integer('votes')->default(0);
+            $table->string('user_id');
+            $table->text('user_name')->default('No-Name');
+            $table->foreign('choice_id')->references('id')->on('choices');
+            $table->timestamps();
+        });
+
+        // コメントテーブルの作成
+        Schema::create('comment_' . $aQuestionId, function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('user_id');
+            $table->text('user_name')->default('No-Name');
+            $table->text('comment');
+            $table->timestamps();
+        });
+    }
 }

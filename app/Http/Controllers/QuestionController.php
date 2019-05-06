@@ -7,8 +7,10 @@ use App\Questions;
 use App\Choices;
 use App\Http\Requests\QuestionRequest;
 use App\Http\Requests\ReEditQuestionRequest;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
 use App\Facades\AnswerLogicFacade;
+use Illuminate\Support\Facades\Schema;
 
 class QuestionController extends Controller
 {
@@ -29,6 +31,9 @@ class QuestionController extends Controller
             $question = new Choices;
             $question->fill($choiceValue)->save();
         }
+
+        // アンケートテーブルとコメントテーブルの作成
+        AnswerLogicFacade::createAnswerTable($questions->id);
 
         // URLハッシュから質問情報を取得
         $questionInfo = AnswerLogicFacade::getQuestionData($request->questionInfo['url_hash']);

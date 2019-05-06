@@ -44,3 +44,6 @@ Route::get('Answer','AnswerController@answer')->middleware(AnswerMiddleware::cla
 Route::post('AnswerExe','AnswerController@answerExe')->middleware(AnswerMiddleware::class)->middleware(AnswerExeMiddleware::class);
 Route::get('ViewAnswer','AnswerController@viewAnswer')->middleware(ViewAnswerMiddleware::class);
 Route::post('ViewAnsweredUserList','AnswerController@viewAnsweredUser')->middleware(ViewAnswerdUserMiddleware::class);
+
+// コメント投稿処理
+Route::post('SendComment','CommentController@sendComment');
