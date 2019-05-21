@@ -4,6 +4,7 @@ namespace App\Http\Middleware\Answer;
 
 use Closure;
 use App\Facades\AnswerLogicFacade;
+use Illuminate\Support\Facades\DB;
 
 class ViewAnswerMiddleware
 {
@@ -24,8 +25,12 @@ class ViewAnswerMiddleware
         // 投票結果を取得
         $answerInfo = AnswerLogicFacade::getAnswerData($questionInfo->id);
 
+        // コメント一覧を取得
+        $commentList = DB::SELECT('SELECT * FROM comment_' . $questionInfo->id );
+
         $request->merge(['questionInfo' => $questionInfo]);
         $request->merge(['answerInfo' => $answerInfo]);
+        $request->merge(['commentList' => $commentList]);
 
         return $next($request);
     }

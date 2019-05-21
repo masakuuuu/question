@@ -33,11 +33,9 @@ class AnswerMiddleware
         // 解答済みチェック
         $isAnswered = AnswerLogicFacade::isAnswered($questionInfo->id, $request->session()->getId());
 
-
         $request->merge(['questionInfo' => $questionInfo]);
         $request->merge(['choiceInfo' => $choiceInfo]);
         $request->merge(['isAnswered' => $isAnswered]);
-
 
         return $next($request);
     }

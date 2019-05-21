@@ -19,6 +19,7 @@ use App\Http\Middleware\Answer\AnswerMiddleware;
 use App\Http\Middleware\Answer\AnswerExeMiddleware;
 use App\Http\Middleware\Answer\ViewAnswerMiddleware;
 use App\Http\Middleware\Answer\ViewAnswerdUserMiddleware;
+use App\Http\Middleware\Comment\SendCommentMiddleware;
 
 // ユーザ登録画面
 Route::get('OAuth','TwitterOAuthController@oAuth');
@@ -46,4 +47,4 @@ Route::get('ViewAnswer','AnswerController@viewAnswer')->middleware(ViewAnswerMid
 Route::post('ViewAnsweredUserList','AnswerController@viewAnsweredUser')->middleware(ViewAnswerdUserMiddleware::class);
 
 // コメント投稿処理
-Route::post('SendComment','CommentController@sendComment');
+Route::post('SendComment','CommentController@sendComment')->middleware(SendCommentMiddleware::class);

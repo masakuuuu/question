@@ -20,7 +20,9 @@ class AnswerController extends Controller
     {
         if ($request->isAnswered || !$request->questionLimit) {
             // 解答済みのアンケートの場合はアンケート結果画面を表示する
-            return $this->viewAnswer($request);
+//            return $this->viewAnswer($request);
+            return redirect()->action(
+                'AnswerController@viewAnswer', ['url_hash' => $request->url_hash]);
         } else {
             // 未回答の場合はアンケート回答画面を表示する
             return view('answer',
@@ -99,7 +101,8 @@ class AnswerController extends Controller
         return view('answerView',
             [
                 'questionInfo' => $questionInfo,
-                'answerInfo' => $answerInfo
+                'answerInfo' => $answerInfo,
+                'commentList' => $request->commentList,
             ]
         );
     }
