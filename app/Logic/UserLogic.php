@@ -33,11 +33,13 @@ class UserLogic
      *
      * @param int $aUserId    ID
      * @param string $aName   アカウント名
+     * @param string $aProfileImageUrl ユーザのサムネイル画像のURL
      */
-    public function updateTwitterUserData(string $aUserId, string $aName){
+    public function updateTwitterUserData(string $aUserId, string $aName, string $aProfileImageUrl){
         $userInfo = [
             'twitter_id' => $aUserId,
-            'name' => $aName
+            'name' => $aName,
+            'thumbnail' => $aProfileImageUrl,
         ];
         User::updateOrCreate(['twitter_id' => $aUserId], $userInfo);
     }

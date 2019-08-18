@@ -15,12 +15,10 @@ class CommentController extends Controller
         }
 
         // コメントの登録処理
-        DB::INSERT('INSERT INTO comment_' . $request->questionInfo['id'] . ' (user_id, user_name, comment) VALUES(:user_id, :user_name, :comment) ',
+        DB::INSERT('INSERT INTO comment_' . $request->questionInfo->id . ' (user_id, user_name, comment) VALUES(:user_id, :user_name, :comment) ',
             [
-//                'user_id' => session('twitter_user_id'),
-//                'name' => session('name'),
-                'user_id' => 1,
-                'user_name' => 'テストユーザ',
+                'user_id' => session('twitter_user_id'),
+                'user_name' => session('name'),
                 'comment' => $request->comment
             ]);
 

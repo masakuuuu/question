@@ -76,7 +76,7 @@ class TwitterOAuthController extends Controller
             'profile_image_url_https' => $twitter_user_info->profile_image_url_https,
         ));
 
-        UserLogicFacade::updateTwitterUserData($twitter_user_info->id, $twitter_user_info->screen_name);
+        UserLogicFacade::updateTwitterUserData($twitter_user_info->id, $twitter_user_info->screen_name, $twitter_user_info->profile_image_url);
 
         return redirect(session('redirectUrl') ? session('redirectUrl') : '/');
     }

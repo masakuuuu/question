@@ -5,7 +5,7 @@
                 <form action="SendComment" method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="url_hash" value="{{$questionInfo->url_hash}}">
-                    <input type="hidden" name="question_id" value="">
+                    <input type="hidden" name="question_id" value="{{$questionInfo->id}}">
                     <textarea name="comment" placeholder="コメント"></textarea>
                     <input type="submit" value="送信">
                 </form>

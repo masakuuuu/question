@@ -20,7 +20,13 @@ class ViewAnswerMiddleware
 
         // URLハッシュから質問情報を取得
         $questionInfo = AnswerLogicFacade::getQuestionData($request->url_hash);
-        $questionInfo['limit'] = date('Y年m月d日', strtotime($questionInfo['limit']));
+        $questionInfo->limit = date('Y年m月d日', strtotime($questionInfo->limit));
+
+        // ログイン認証済みの場合は解答済みチェック
+        if(session('twitter_user_id')){
+            $isAnswered = AnswerLogicFacade::isAnswered($questionInfo->id, session('twitter_user_id'));
+            $request->merge(['isAnswered' => $isAnswered]);
+        }
 
         // 投票結果を取得
         $answerInfo = AnswerLogicFacade::getAnswerData($questionInfo->id);

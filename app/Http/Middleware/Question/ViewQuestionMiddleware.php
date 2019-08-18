@@ -19,7 +19,7 @@ class ViewQuestionMiddleware
         // URLハッシュから質問情報を取得
         $questionInfo = AnswerLogicFacade::getQuestionData($request->url_hash);
 
-        $questionInfo['limit'] = date('Y年m月d日', strtotime($questionInfo['limit']));
+        $questionInfo->limit = date('Y年m月d日', strtotime($questionInfo->limit));
 
         // 質問iDをキーにして選択肢情報を取得
         $choiceInfo = AnswerLogicFacade::getChoiceData($questionInfo->id);

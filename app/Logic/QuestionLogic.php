@@ -47,10 +47,11 @@ class QuestionLogic
                 break;
             }
 
-            $sql = 'select count(*), t1.id, t1.question_title, t1.question_detail, t1.url_hash, t1.auther_name
+            $sql = 'select count(*), t1.id, t1.question_title, t1.question_detail, t1.url_hash, t1.auther_name, max(t3.thumbnail) as thumbnail
                 from questions t1
                        inner join answers t2
                                   on t1.id = t2.question_id
+                                  inner join users t3 on t1.auther_id = t3.twitter_id
                 where t1.limit > current_date and t1.enable
                 group by t1.id
                 order by count';

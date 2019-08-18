@@ -12,7 +12,10 @@
                                 <a href="Answer?url_hash={{ $question->url_hash }}">
                                     <div class="uk-card uk-card-default">
                                         <div class="uk-card-media-top">
-                                            <img src="images/photo.jpg" alt="">
+                                            <img src="{{ $question->thumbnail }}" alt="">
+                                            <p class="uk-text-meta uk-margin-remove-top">
+                                                by {{ $question->auther_name }}
+                                            </p>
                                         </div>
                                         <div class="uk-card-body">
                                             <h3 class="uk-card-title">{{ $question->question_title }}</h3>
@@ -24,7 +27,10 @@
                                 <a href="ViewVoteAnswer?url_hash={{ $question->url_hash }}">
                                     <div class="uk-card uk-card-default">
                                         <div class="uk-card-media-top">
-                                            <img src="images/photo.jpg" alt="">
+                                            <img src="images/photo.jpg" alt="{{ $question->thumbnail }}">
+                                            <p class="uk-text-meta uk-margin-remove-top">
+                                                by {{ $question->auther_name }}
+                                            </p>
                                         </div>
                                         <div class="uk-card-body">
                                             <h3 class="uk-card-title">{{ $question->question_title }}</h3>

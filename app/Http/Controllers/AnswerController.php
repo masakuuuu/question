@@ -93,13 +93,14 @@ class AnswerController extends Controller
     {
         // URLハッシュから質問情報を取得
         $questionInfo = AnswerLogicFacade::getQuestionData($request->url_hash);
-        $questionInfo['limit'] = date('Y年m月d日', strtotime($questionInfo['limit']));
+        $questionInfo->limit = date('Y年m月d日', strtotime($questionInfo->limit));
 
         // 投票結果を取得
         $answerInfo = AnswerLogicFacade::getAnswerData($questionInfo->id);
 
         return view('answerView',
             [
+                'isAnswered' => $request->isAnswered,
                 'questionInfo' => $questionInfo,
                 'answerInfo' => $answerInfo,
                 'commentList' => $request->commentList,

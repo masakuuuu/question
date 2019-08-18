@@ -56,7 +56,7 @@
             <div class="uk-card-header">
                 <div class="uk-grid-small uk-flex-middle" uk-grid>
                     <div class="uk-width-auto">
-                        <img class="uk-border-circle" width="40" height="40" src="images/avatar.jpg">
+                        <img class="uk-border-circle" width="40" height="40" src="{{ $questionInfo->thumbnail }}">
                     </div>
                     <div class="uk-width-expand">
                         <h3 class="uk-card-title uk-margin-remove-bottom">{{ $questionInfo->question_title }}</h3>
@@ -122,15 +122,6 @@
                         @endforeach
                         </tbody>
                     </table>
-
-                    @if(session('twitter_user_id'))
-                    <div class="uk-margin" id="user_name">
-                        <label class="uk-form-label uk-text-bold" for="password">お名前</label>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="user_name" type="text" name="user_name" placeholder="Some text...">
-                        </div>
-                    </div>
-                    @endif
 
                     <div class="uk-flex uk-flex-center">
                         <p uk-margin>
