@@ -16,7 +16,11 @@
                         @if(count($hot_questions))
                             @foreach($hot_questions as $question)
                                 <li>
-                                    <a href="Answer?url_hash={{ $question->url_hash }}">{{ $question->question_title }}</a>
+                                    @if(session('twitter_user_id'))
+                                        <a href="Answer?url_hash={{ $question->url_hash }}">{{ $question->question_title }}</a>
+                                    @else
+                                        <a href="ViewVoteAnswer?url_hash={{ $question->url_hash }}">{{ $question->question_title }}</a>
+                                    @endif
                                 </li>
                             @endforeach
                         @else
@@ -31,7 +35,11 @@
                         @if(count($current_questions))
                             @foreach($current_questions as $question)
                                 <li>
-                                    <a href="Answer?url_hash={{ $question->url_hash }}">{{ $question->question_title }}</a>
+                                    @if(session('twitter_user_id'))
+                                        <a href="Answer?url_hash={{ $question->url_hash }}">{{ $question->question_title }}</a>
+                                    @else
+                                        <a href="ViewVoteAnswer?url_hash={{ $question->url_hash }}">{{ $question->question_title }}</a>
+                                    @endif
                                 </li>
                             @endforeach
                         @else
@@ -46,7 +54,11 @@
                         @if(count($endSoon_questions))
                             @foreach($endSoon_questions as $question)
                                 <li>
-                                    <a href="Answer?url_hash={{ $question->url_hash }}">{{ $question->question_title }}</a>
+                                    @if(session('twitter_user_id'))
+                                        <a href="Answer?url_hash={{ $question->url_hash }}">{{ $question->question_title }}</a>
+                                    @else
+                                        <a href="ViewVoteAnswer?url_hash={{ $question->url_hash }}">{{ $question->question_title }}</a>
+                                    @endif
                                 </li>
                             @endforeach
                         @else
@@ -61,7 +73,11 @@
                         @if(count($result_questions))
                             @foreach($result_questions as $question)
                                 <li>
-                                    <a href="Answer?url_hash={{ $question->url_hash }}">{{ $question->question_title }}</a>
+                                    @if(session('twitter_user_id'))
+                                        <a href="Answer?url_hash={{ $question->url_hash }}">{{ $question->question_title }}</a>
+                                    @else
+                                        <a href="ViewVoteAnswer?url_hash={{ $question->url_hash }}">{{ $question->question_title }}</a>
+                                    @endif
                                 </li>
                             @endforeach
                         @else

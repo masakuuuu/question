@@ -24,11 +24,16 @@
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                         <li class="uk-nav-header">メニュー</li>
                         <li class="uk-active"><a href="#">ホーム</a></li>
-                        <li><a href="Create">新規作成</a></li>
-                        <li><a href="Create">閲覧</a></li>
-                        <li><a href="#">設定</a></li>
-                        <li class="uk-nav-divider"></li>
-                        <li><a href="#">ログアト</a></li>
+                        @if(session('twitter_user_id'))
+                            <li><a href="Create">新規作成</a></li>
+                            <li><a href="Create">閲覧</a></li>
+                            <li><a href="#">設定</a></li>
+                            <li class="uk-nav-divider"></li>
+                            <li><a href="Logout">ログアウト</a></li>
+                        @else
+                            <li class="uk-nav-divider"></li>
+                            <li><a href="OAuth">ログイン</a></li>
+                        @endif
                     </ul>
                 </div>
             </li>

@@ -20,31 +20,59 @@ use App\Http\Middleware\Answer\AnswerExeMiddleware;
 use App\Http\Middleware\Answer\ViewAnswerMiddleware;
 use App\Http\Middleware\Answer\ViewAnswerdUserMiddleware;
 use App\Http\Middleware\Comment\SendCommentMiddleware;
+use App\Http\Middleware\Auth\AuthMiddleware;
 
 // ユーザ登録画面
 Route::get('OAuth','TwitterOAuthController@oAuth');
 Route::get('Callback','TwitterOAuthController@callback');
 
+// ログアウト
+Route::get('Logout','TwitterOAuthController@logout');
+
 // トップ画面
 Route::get('/','HomeController@index');
-
-// アンケート作成画面
-Route::get('Create','QuestionController@create');
-Route::post('CreateExe','QuestionController@createExe')->middleware(CreateQuestionMiddleware::class);
-
-// アンケートの再編集
-Route::get('ReEdit','QuestionController@reEdit')->middleware(EditQuestionMiddleware::class)->middleware(EditChoiceMiddleware::class);
-Route::post('ReEditExe','QuestionController@reEditExe')->middleware(CreateQuestionMiddleware::class)->middleware(EditQuestionMiddleware::class)->middleware(EditChoiceMiddleware::class);
-Route::post('CheckEditPassword','QuestionController@checkEditPassword')->middleware(EditQuestionMiddleware::class);
 
 // アンケートの閲覧画面
 Route::get('View','QuestionController@view')->middleware(ViewQuestionMiddleware::class);
 
-// アンケート回答画面
-Route::get('Answer','AnswerController@answer')->middleware(AnswerMiddleware::class);
-Route::post('AnswerExe','AnswerController@answerExe')->middleware(AnswerMiddleware::class)->middleware(AnswerExeMiddleware::class);
-Route::get('ViewAnswer','AnswerController@viewAnswer')->middleware(ViewAnswerMiddleware::class);
-Route::post('ViewAnsweredUserList','AnswerController@viewAnsweredUser')->middleware(ViewAnswerdUserMiddleware::class);
+// アンケートの画面
+Route::get('ViewVoteAnswer','AnswerController@answer')->middleware(AnswerMiddleware::class);
+
+//// アンケート作成画面
+//Route::get('Create','QuestionController@create')->middleware(AuthMiddleware::class);
+//Route::post('CreateExe','QuestionController@createExe')->middleware(CreateQuestionMiddleware::class);
+
+//// アンケートの再編集
+//Route::get('ReEdit','QuestionController@reEdit')->middleware(EditQuestionMiddleware::class)->middleware(EditChoiceMiddleware::class);
+//Route::post('ReEditExe','QuestionController@reEditExe')->middleware(CreateQuestionMiddleware::class)->middleware(EditQuestionMiddleware::class)->middleware(EditChoiceMiddleware::class);
+//Route::post('CheckEditPassword','QuestionController@checkEditPassword')->middleware(EditQuestionMiddleware::class);
+
+//// アンケート回答画面
+//Route::get('Answer','AnswerController@answer')->middleware(AnswerMiddleware::class);
+//Route::post('AnswerExe','AnswerController@answerExe')->middleware(AnswerMiddleware::class)->middleware(AnswerExeMiddleware::class);
+//Route::get('ViewAnswer','AnswerController@viewAnswer')->middleware(ViewAnswerMiddleware::class);
+//Route::post('ViewAnsweredUserList','AnswerController@viewAnsweredUser')->middleware(ViewAnswerdUserMiddleware::class);
+
+//// コメント投稿処理
+//Route::post('SendComment','CommentController@sendComment')->middleware(SendCommentMiddleware::class);
+
+// Twitter認証が必要なページ一覧
+Route::group(['middleware' => 'auth'], function(){
+    // アンケート作成画面
+    Route::get('Create','QuestionController@create');
+    Route::post('CreateExe','QuestionController@createExe')->middleware(CreateQuestionMiddleware::class);
+
+    // アンケートの再編集
+    Route::get('ReEdit','QuestionController@reEdit')->middleware(EditQuestionMiddleware::class)->middleware(EditChoiceMiddleware::class);
+    Route::post('ReEditExe','QuestionController@reEditExe')->middleware(CreateQuestionMiddleware::class)->middleware(EditQuestionMiddleware::class)->middleware(EditChoiceMiddleware::class);
+    Route::post('CheckEditPassword','QuestionController@checkEditPassword')->middleware(EditQuestionMiddleware::class);
+
+    // アンケート回答画面
+    Route::get('Answer','AnswerController@answer')->middleware(AnswerMiddleware::class);
+    Route::post('AnswerExe','AnswerController@answerExe')->middleware(AnswerMiddleware::class)->middleware(AnswerExeMiddleware::class);
+    Route::get('ViewAnswer','AnswerController@viewAnswer')->middleware(ViewAnswerMiddleware::class);
+    Route::post('ViewAnsweredUserList','AnswerController@viewAnsweredUser')->middleware(ViewAnswerdUserMiddleware::class);
 
 // コメント投稿処理
-Route::post('SendComment','CommentController@sendComment')->middleware(SendCommentMiddleware::class);
+    Route::post('SendComment','CommentController@sendComment')->middleware(SendCommentMiddleware::class);
+});

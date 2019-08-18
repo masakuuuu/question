@@ -8,7 +8,7 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 
 class TwitterOAuthController extends Controller
 {
-    public function oAuth()
+    public function oAuth(Request $request)
     {
         $twitter = new TwitterOAuth(
             config('twitter.consumer_key'),
@@ -29,6 +29,11 @@ class TwitterOAuthController extends Controller
         // 認証画面へ移動させる
         $url = $twitter->url('oauth/authenticate', array(
             'oauth_token' => $token['oauth_token']
+        ));
+
+        // ログインを実行した際の画面のリファラ情報をセット
+        session(array(
+            'redirectUrl' => url()->previous(),
         ));
 
         return redirect($url);
@@ -73,6 +78,11 @@ class TwitterOAuthController extends Controller
 
         UserLogicFacade::updateTwitterUserData($twitter_user_info->id, $twitter_user_info->screen_name);
 
+        return redirect(session('redirectUrl') ? session('redirectUrl') : '/');
+    }
+
+    public function logout(Request $request){
+        $request->session()->flush();
         return redirect('/');
     }
 }

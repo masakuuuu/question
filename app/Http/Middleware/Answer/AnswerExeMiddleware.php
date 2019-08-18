@@ -29,6 +29,7 @@ class AnswerExeMiddleware
                     'question_id' => (int)$form['question_id'],
                     'choice_id' => $choice_id,
                     'votes' => (int)$votes,
+                    'user_id' => session('twitter_user_id'),
                     'user_name' => $form['user_name']?$form['user_name']:'名無しさん',
                 ]);
                 $totalVotes += $votes;

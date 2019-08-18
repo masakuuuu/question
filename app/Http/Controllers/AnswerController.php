@@ -75,7 +75,7 @@ class AnswerController extends Controller
             $answerValue['question_id'] = $answerInfo['question_id'];
             $answerValue['choice_id'] = $answerInfo['choice_id'];
             $answerValue['votes'] = $answerInfo['votes'];
-            $answerValue['user_id'] = $request->session()->getId();
+            $answerValue['user_id'] = $answerInfo['user_id'];
             $answerValue['user_name'] = $answerInfo['user_name'];
             $answers = new Answers();
             $answers->fill($answerValue)->save();

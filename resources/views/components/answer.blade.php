@@ -71,15 +71,20 @@
             </div>
             <div class="uk-card-footer">
 
+                @if(session('twitter_user_id'))
                 <div class="uk-flex uk-flex-center">
                     <div>
                         <input type="hidden" id="point" value="{{ $questionInfo->point }}">
                         残り <span id="point_view" class="uk-text-bold uk-text-large">{{ $questionInfo->point }}</span> 点
                     </div>
                 </div>
+                @endif
 
-
-                <form action="AnswerExe" method="post">
+                    @if(session('twitter_user_id'))
+                        <form action="AnswerExe" method="post">
+                    @else
+                        <form action="Answer" method="get">
+                    @endif
                     {{ csrf_field() }}
                     <input type="hidden" name="url_hash" value="{{$questionInfo->url_hash}}">
                     <input type="hidden" name="question_id" value="{{$questionInfo->id}}">
@@ -88,8 +93,10 @@
                         <thead>
                         <tr>
                             <th>選択肢</th>
+                            @if(session('twitter_user_id'))
                             <th>投票ボタン</th>
                             <th>投票数</th>
+                            @endif
                         </tr>
                         </thead>
                         <tbody>
@@ -99,6 +106,7 @@
                                 <td>
                                     {{ $choice->choice_text }}
                                 </td>
+                                @if(session('twitter_user_id'))
                                 <td>
                                     <a onclick="addVotes({{$choice->id}})" class="uk-icon-button" uk-icon="plus"></a>
                                     <a onclick="subtractVotes({{$choice->id}})" class="uk-icon-button" uk-icon="minus"></a>
@@ -109,22 +117,30 @@
                                     <span id="answer_view_{{$choice->id}}">@if(old('answers.' . $choice->id)) {{ old('answers.' . $choice->id) }} @else
                                             0 @endif</span>
                                 </td>
+                                @endif
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
 
+                    @if(session('twitter_user_id'))
                     <div class="uk-margin" id="user_name">
                         <label class="uk-form-label uk-text-bold" for="password">お名前</label>
                         <div class="uk-form-controls">
                             <input class="uk-input" id="user_name" type="text" name="user_name" placeholder="Some text...">
                         </div>
                     </div>
+                    @endif
 
                     <div class="uk-flex uk-flex-center">
                         <p uk-margin>
-                            <button class="uk-button uk-button-default uk-width-small" type="submit">回答</button>
-                            <button class="uk-button uk-button-default uk-width-small" type="submit">キャンセル</button>
+                            @if(session('twitter_user_id'))
+                                <button class="uk-button uk-button-default uk-width-small" type="submit">回答</button>
+                                <button class="uk-button uk-button-default uk-width-small" type="submit">キャンセル</button>
+                            @else
+                                <button class="uk-button uk-button-default uk-width-small" type="submit">ログインして回答
+                                </button>
+                            @endif
                         </p>
                     </div>
                 </form>
