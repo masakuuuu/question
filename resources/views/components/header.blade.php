@@ -26,7 +26,7 @@
                         <li class="uk-active"><a href="#">ホーム</a></li>
                         @if(session('twitter_user_id'))
                             <li><a href="Create">新規作成</a></li>
-                            <li><a href="Create">閲覧</a></li>
+                            <li><a href="ViewQuestionsList">閲覧</a></li>
                             <li><a href="#">設定</a></li>
                             <li class="uk-nav-divider"></li>
                             <li><a href="Logout">ログアウト</a></li>

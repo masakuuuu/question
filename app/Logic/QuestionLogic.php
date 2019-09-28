@@ -8,8 +8,9 @@
 
 namespace App\Logic;
 
+use App\Choices;
 use Illuminate\Support\Facades\DB;
-use App\Answers;
+use App\Questions;
 
 /**
  * Class QuestionLogic
@@ -60,4 +61,15 @@ class QuestionLogic
         }
         return $questionData;
     }
+
+    /**
+     * ユーザIDに基づく質問のリストを返す
+     *
+     * @param String  $aUserId ユーザID
+     * @return mixed  ユーザに紐づく質問のリスト
+     */
+    public function getQuestionsList(String $aUserId){
+        return Questions::where('auther_id', $aUserId)->get();
+    }
+
 }

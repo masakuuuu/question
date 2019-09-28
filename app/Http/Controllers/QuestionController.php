@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Answers;
+use App\Facades\QuestionLogicFacade;
 use App\Questions;
 use App\Choices;
 use App\Http\Requests\QuestionRequest;
@@ -48,7 +49,8 @@ class QuestionController extends Controller
         return view("questionView",
             [
                 'questionInfo' => $questionInfo,
-                'choiceInfo' => $choiceInfo
+                'choiceInfo' => $choiceInfo,
+                'commentList' => array(),
             ]
         );
     }
@@ -90,5 +92,10 @@ class QuestionController extends Controller
             return ['result' => true];
         }
         return ['result' => false];
+    }
+
+    public function viewList()
+    {
+        return view('createList', ['questionsList' => QuestionLogicFacade::getQuestionsList(session('twitter_user_id'))]);
     }
 }
