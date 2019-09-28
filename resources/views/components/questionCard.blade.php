@@ -27,7 +27,7 @@
                                 <a href="ViewVoteAnswer?url_hash={{ $question->url_hash }}">
                                     <div class="uk-card uk-card-default">
                                         <div class="uk-card-media-top">
-                                            <img src="images/photo.jpg" alt="{{ $question->thumbnail }}">
+                                            <img src="{{ $question->thumbnail }}" alt="">
                                             <p class="uk-text-meta uk-margin-remove-top">
                                                 by {{ $question->auther_name }}
                                             </p>
