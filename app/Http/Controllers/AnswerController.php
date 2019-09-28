@@ -80,8 +80,9 @@ class AnswerController extends Controller
             $answers = new Answers();
             $answers->fill($answerValue)->save();
         }
-
-        return $this->viewAnswer($request);
+        
+        return redirect()->action(
+            'AnswerController@viewAnswer', ['url_hash' => $request->url_hash]);
     }
 
     /**
