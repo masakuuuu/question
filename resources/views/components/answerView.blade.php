@@ -3,7 +3,7 @@
         <div class="uk-card uk-card-default uk-width-1-2@m">
             @if($isAnswered)
                 <div class="uk-card-body">
-                    <p>すでに解答済みのアンケートです</p>
+                    <p>既に解答済みのアンケートです</p>
                 </div>
             @endif
             <div class="uk-card-header">

@@ -72,4 +72,11 @@ class QuestionLogic
         return Questions::where('auther_id', $aUserId)->get();
     }
 
+    public function isAuther(int $aQuestionId, String $sessionId){
+        $isAuther = false;
+        if(Questions::where('id', $aQuestionId)->where('auther_id', $sessionId)->exists()){
+            $isAuther = true;
+        }
+        return $isAuther;
+    }
 }

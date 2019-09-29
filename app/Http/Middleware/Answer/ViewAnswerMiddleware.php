@@ -22,8 +22,9 @@ class ViewAnswerMiddleware
         $questionInfo = AnswerLogicFacade::getQuestionData($request->url_hash);
         $questionInfo->limit = date('Y年m月d日', strtotime($questionInfo->limit));
 
-        // ログイン認証済みの場合は解答済みチェック
+        // ログイン認証済みの場合はアンケート情報をチェック
         if(session('twitter_user_id')){
+            // 解答済みチェック
             $isAnswered = AnswerLogicFacade::isAnswered($questionInfo->id, session('twitter_user_id'));
             $request->merge(['isAnswered' => $isAnswered]);
         }

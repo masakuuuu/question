@@ -38,21 +38,17 @@ class AnswerController extends Controller
     }
 
     /**
-     * アンケート回答画面を表示します。
+     * アンケートの回答を登録し、結果画面を表示します。
      *
      * @param AnswerRequest $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function answerExe(AnswerRequest $request)
     {
-        // 回答済みチェック
-        // 解答済みのアンケートの場合はアンケート結果画面を表示する
-        if ($request->isAnswered) {
-            return $this->viewAnswer($request);
-        }
-
-        // 回答期限チェック
-        if (!$request->questionLimit) {
+        // 回答のチェック
+        // ①解答済みか
+        // ②回答期限内か
+        if ($request->isAnswered || !$request->questionLimit) {
             return $this->viewAnswer($request);
         }
 
@@ -80,9 +76,8 @@ class AnswerController extends Controller
             $answers = new Answers();
             $answers->fill($answerValue)->save();
         }
-        
-        return redirect()->action(
-            'AnswerController@viewAnswer', ['url_hash' => $request->url_hash]);
+
+        return $this->viewAnswer($request);
     }
 
     /**
