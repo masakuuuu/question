@@ -20,7 +20,6 @@ class AnswerController extends Controller
     {
         if ($request->isAnswered || !$request->questionLimit) {
             // 解答済みのアンケートの場合はアンケート結果画面を表示する
-//            return $this->viewAnswer($request);
             return redirect()->action(
                 'AnswerController@viewAnswer', ['url_hash' => $request->url_hash]);
         } else {
@@ -49,7 +48,8 @@ class AnswerController extends Controller
         // ①解答済みか
         // ②回答期限内か
         if ($request->isAnswered || !$request->questionLimit) {
-            return $this->viewAnswer($request);
+            return redirect()->action(
+                'AnswerController@viewAnswer', ['url_hash' => $request->url_hash]);
         }
 
         // 投票数の条件チェック
@@ -77,7 +77,8 @@ class AnswerController extends Controller
             $answers->fill($answerValue)->save();
         }
 
-        return $this->viewAnswer($request);
+        return redirect()->action(
+            'AnswerController@viewAnswer', ['url_hash' => $request->url_hash]);
     }
 
     /**
