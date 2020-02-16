@@ -33,6 +33,7 @@ class CreateQuestionMiddleware
             'limit' => $form['limit'],
             'auther_id' => session('twitter_user_id'),
             'auther_name' => $form['auther_name']?$form['auther_name']:session('name'),
+            'twitter_id' => session('screen_name'),
             'is_open_view' => isset($form['is_open_view']) ? $form['is_open_view'] : true,
             'is_edit' => isset($form['is_edit']) ? $form['is_edit'] : false,
             'edit_password' => isset($form['edit_password']) ? encrypt($form['edit_password']) : null,

@@ -3,6 +3,7 @@
 namespace App\Http\Middleware\Comment;
 
 use App\Facades\AnswerLogicFacade;
+use App\Facades\QuestionLogicFacade;
 use Closure;
 
 class SendCommentMiddleware
@@ -17,7 +18,7 @@ class SendCommentMiddleware
     public function handle($request, Closure $next)
     {
         // URLハッシュから質問情報を取得
-        $questionInfo = AnswerLogicFacade::getQuestionData($request->url_hash);
+        $questionInfo = QuestionLogicFacade::getQuestionData($request->url_hash);
 
         // 解答済みチェック
         // ログイン認証済みの場合は解答済みチェック

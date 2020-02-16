@@ -1,16 +1,8 @@
 <nav class="uk-navbar-container uk-margin" uk-navbar>
     <div class="uk-navbar-left">
 
-        <a class="uk-navbar-item uk-logo" href="/">Logo</a>
+        <a class="uk-navbar-item uk-logo" href="/">Que? Pon!</a>
 
-        <ul class="uk-navbar-nav">
-            <li>
-                <a href="#">
-                    <span class="uk-icon uk-margin-small-right" uk-icon="icon: star"></span>
-                    Features
-                </a>
-            </li>
-        </ul>
     </div>
 
     <div class="uk-navbar-right">
@@ -23,7 +15,7 @@
                 <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                         <li class="uk-nav-header">メニュー</li>
-                        <li class="uk-active"><a href="#">ホーム</a></li>
+                        <li class="uk-active"><a href="/">ホーム</a></li>
                         @if(session('twitter_user_id'))
                             <li><a href="Create">新規作成</a></li>
                             <li><a href="ViewQuestionsList">閲覧</a></li>

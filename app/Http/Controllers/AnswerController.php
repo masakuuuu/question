@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Answers;
+use App\Facades\QuestionLogicFacade;
 use Illuminate\Http\Request;
 use App\Http\Requests\AnswerRequest;
 
@@ -89,7 +90,7 @@ class AnswerController extends Controller
     public function viewAnswer(Request $request)
     {
         // URLハッシュから質問情報を取得
-        $questionInfo = AnswerLogicFacade::getQuestionData($request->url_hash);
+        $questionInfo = QuestionLogicFacade::getQuestionData($request->url_hash);
         $questionInfo->limit = date('Y年m月d日', strtotime($questionInfo->limit));
 
         // 投票結果を取得

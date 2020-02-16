@@ -9,7 +9,7 @@
                     <div class="uk-width-expand">
                         <h3 class="uk-card-title uk-margin-remove-bottom">{{ $questionInfo->question_title }}</h3>
                         <p class="uk-text-meta uk-margin-remove-top">
-                            by {{ $questionInfo->auther_name }}
+                            {{ $questionInfo->auther_name }}
                         </p>
                     </div>
                 </div>

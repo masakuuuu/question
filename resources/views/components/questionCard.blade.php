@@ -7,40 +7,60 @@
 
                 @if(count($hot_questions))
                     @foreach($hot_questions as $question)
+
+
+
                         <li>
                             @if(session('twitter_user_id'))
+
                                 <a href="Answer?url_hash={{ $question->url_hash }}">
-                                    <div class="uk-card uk-card-default">
-                                        <div class="uk-card-media-top">
-                                            <img src="{{ $question->thumbnail }}" alt="">
-                                            <p class="uk-text-meta uk-margin-remove-top">
-                                                by {{ $question->auther_name }}
-                                            </p>
-                                        </div>
-                                        <div class="uk-card-body">
-                                            <h3 class="uk-card-title">{{ $question->question_title }}</h3>
-                                            <p>{{ $question->question_detail }}</p>
-                                        </div>
+                                    <div class="uk-card uk-card-default" style="padding: 20px">
+                                        <article class="uk-comment">
+                                            <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
+                                                <div class="uk-width-auto">
+                                                    <img class="uk-comment-avatar uk-border-circle" src="{{ $question->thumbnail }}" width="60" height="60" alt="">
+                                                </div>
+                                                <div class="uk-width-expand">
+                                                    <h4 class=" uk-margin-remove uk-comment-body"><span class="uk-link-reset uk-text-secondary" style="color: #1b1e21">{{ $question->question_title }}</span></h4>
+                                                    <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+                                                        <li><span style="color: #4e555b ; text-transform: none">{{ $question->auther_name }}</span></li>
+                                                    </ul>
+                                                </div>
+                                            </header>
+                                            <div class="uk-comment-body uk-text-center uk-text-bold" style="padding: 10px">
+                                                <p>{{ $question->question_detail }}</p>
+                                            </div>
+                                        </article>
                                     </div>
                                 </a>
+
                             @else
+
                                 <a href="ViewVoteAnswer?url_hash={{ $question->url_hash }}">
-                                    <div class="uk-card uk-card-default">
-                                        <div class="uk-card-media-top">
-                                            <img src="{{ $question->thumbnail }}" alt="">
-                                            <p class="uk-text-meta uk-margin-remove-top">
-                                                by {{ $question->auther_name }}
-                                            </p>
-                                        </div>
-                                        <div class="uk-card-body">
-                                            <h3 class="uk-card-title">{{ $question->question_title }}</h3>
-                                            <p>{{ $question->question_detail }}</p>
-                                        </div>
+                                    <div class="uk-card uk-card-default" style="padding: 20px">
+                                        <article class="uk-comment">
+                                            <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
+                                                <div class="uk-width-auto">
+                                                    <img class="uk-comment-avatar uk-border-circle" src="{{ $question->thumbnail }}" width="60" height="60" alt="">
+                                                </div>
+                                                <div class="uk-width-expand">
+                                                    <h4 class=" uk-margin-remove uk-comment-body"><span class="uk-link-reset uk-text-secondary" style="color: #1b1e21">{{ $question->auther_name }}</span></h4>
+                                                    <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+                                                        <li><span style="color: #4e555b">12 days ago</span></li>
+                                                    </ul>
+                                                </div>
+                                            </header>
+                                            <div class="uk-comment-body uk-text-center uk-text-bold" style="padding: 10px">
+                                                <p>{{ $question->question_title }}</p>
+                                            </div>
+                                        </article>
                                     </div>
                                 </a>
+
                             @endif
 
                         </li>
+
                     @endforeach
                 @else
                     <li>

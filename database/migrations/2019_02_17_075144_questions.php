@@ -16,6 +16,7 @@ class Questions extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('auther_id')->nullable();  // OAuth等で連携する際に利用
+            $table->string('twitter_id');
             $table->string('auther_name');
             $table->string('question_title');
             $table->string('question_detail');

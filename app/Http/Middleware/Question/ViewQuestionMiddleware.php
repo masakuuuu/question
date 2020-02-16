@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware\Question;
 
+use App\Facades\QuestionLogicFacade;
 use Closure;
 use App\Facades\AnswerLogicFacade;
 
@@ -17,7 +18,7 @@ class ViewQuestionMiddleware
     public function handle($request, Closure $next)
     {
         // URLハッシュから質問情報を取得
-        $questionInfo = AnswerLogicFacade::getQuestionData($request->url_hash);
+        $questionInfo = QuestionLogicFacade::getQuestionData($request->url_hash);
 
         $questionInfo->limit = date('Y年m月d日', strtotime($questionInfo->limit));
 
