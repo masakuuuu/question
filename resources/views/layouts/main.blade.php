@@ -23,8 +23,7 @@
 
 </div>
 
-    <div class="footer">
-        @yield('footer')
-    </div>
+@yield('footer')
+
 </body>
 </html>

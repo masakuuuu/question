@@ -10,8 +10,6 @@
 
     @include('components.answerView')
 
-    @include('components.snsTransmission')
-
     @include('components.answerUserList')
 
     @include('components.commentList')
@@ -21,5 +19,7 @@
 @endsection
 
 @section('footer')
-    copyrite 2019 MasaKu
+
+    @include('components.footer')
+
 @endsection

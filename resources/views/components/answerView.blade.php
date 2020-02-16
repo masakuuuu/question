@@ -3,7 +3,7 @@
         <div class="uk-card uk-card-default uk-width-1-2@m">
             @if($isAnswered)
                 <div class="uk-card-body">
-                    <p>既に解答済みのアンケートです</p>
+                    <p>解答済みのアンケートです</p>
                 </div>
             @endif
             <div class="uk-card-header">
@@ -54,6 +54,10 @@
                     @endforeach
                     </tbody>
                 </table>
+
+                <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{ $questionInfo->question_title }}&hashtags=quepon" data-size="large">Tweet</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
                 <p class="uk-text-muted">締切日： {{ $questionInfo->limit }} </p>
             </div>
         </div>

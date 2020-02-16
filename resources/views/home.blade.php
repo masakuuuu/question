@@ -15,5 +15,7 @@
 @endsection
 
 @section('footer')
-    copyrite 2019 MasaKu
+
+    @include('components.footer')
+
 @endsection

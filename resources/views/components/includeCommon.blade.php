@@ -11,5 +11,7 @@
 <script src="js/popper-utils.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
+<script type="text/javascript" src="js/footerFixed.js"></script>
+
 <!-- css -->
 <link rel="stylesheet" href="css/bootstrap.min.css" />
