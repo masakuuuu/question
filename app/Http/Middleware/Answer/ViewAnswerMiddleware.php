@@ -39,6 +39,8 @@ class ViewAnswerMiddleware
         $request->merge(['questionInfo' => $questionInfo]);
         $request->merge(['answerInfo' => $answerInfo]);
         $request->merge(['commentList' => $commentList]);
+        $url = url('Answer') . '?url_hash=' . $request->url_hash;
+        $request->merge(['shareUrl' =>  $url]);
 
         return $next($request);
     }

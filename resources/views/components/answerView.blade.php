@@ -3,7 +3,11 @@
         <div class="uk-card uk-card-default uk-width-1-2@m">
             @if($isAnswered)
                 <div class="uk-card-body">
-                    <p>解答済みのアンケートです</p>
+                    <span class="uk-label uk-label-success">回答済み</span>
+                </div>
+            @else
+                <div class="uk-card-body">
+                    <span class="uk-label">未回答</span>
                 </div>
             @endif
             <div class="uk-card-header">

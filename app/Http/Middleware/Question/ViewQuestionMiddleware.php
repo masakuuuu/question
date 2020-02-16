@@ -27,6 +27,7 @@ class ViewQuestionMiddleware
 
         $request->merge(['questionInfo' => $questionInfo]);
         $request->merge(['choiceInfo' => $choiceInfo]);
+        $request->merge(['shareUrl' => url('/Answer?' . $request->url_hash)]);
 
         return $next($request);
     }

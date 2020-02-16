@@ -102,6 +102,7 @@ class AnswerController extends Controller
                 'questionInfo' => $questionInfo,
                 'answerInfo' => $answerInfo,
                 'commentList' => $request->commentList,
+                'shareUrl' => $request->shareUrl,
             ]
         );
     }

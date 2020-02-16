@@ -61,7 +61,8 @@ class QuestionController extends Controller
         return view("questionView",
             [
                 'questionInfo' => $request->questionInfo,
-                'choiceInfo' => $request->choiceInfo
+                'choiceInfo' => $request->choiceInfo,
+                'shareUrl' => $request->shareUrl,
             ]
         );
     }
