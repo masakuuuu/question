@@ -46,13 +46,16 @@ class QuestionController extends Controller
         $choiceInfo = AnswerLogicFacade::getChoiceData($questionInfo->id);
 
         // アンケートの表示
-        return view("questionView",
-            [
-                'questionInfo' => $questionInfo,
-                'choiceInfo' => $choiceInfo,
-                'commentList' => array(),
-            ]
-        );
+//        return view("questionView",
+//            [
+//                'questionInfo' => $questionInfo,
+//                'choiceInfo' => $choiceInfo,
+//                'commentList' => array(),
+//            ]
+//        );
+
+        return redirect()->action(
+            'AnswerController@viewAnswer', ['url_hash' => $request->questionInfo['url_hash']]);
     }
 
     public function view(Request $request)

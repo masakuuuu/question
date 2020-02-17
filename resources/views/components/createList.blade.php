@@ -2,19 +2,44 @@
     <div class="uk-flex uk-flex-center">
         <div class="uk-card uk-card-default uk-width-1-2@m">
             <div class="uk-margin">
-                <ul id="newQuestion" class="uk-list uk-list-divider">
+
+                <table class="uk-table uk-table-hover uk-table-divider">
+                    <thead>
+                    <tr>
+                        <th class="uk-text-center">タイトル</th>
+                        <th class="uk-text-center">回答期限</th>
+                        <th class="uk-text-center">回答数</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
                     @if(count($questionsList))
                         @foreach($questionsList as $question)
-                            <li>
-                                {{ $question->question_title }}
-                            </li>
-                        @endforeach
+                        <tr>
+                            <td>
+                                <a href="ViewAnswer?url_hash={{ $question->url_hash }}">{{ $question->question_title }}</a>
+                            </td>
+                            <td class="uk-text-right">
+                                {{ $question->limit }}
+                            </td>
+                            <td class="uk-text-right">
+                                ここに回答数が表示される
+                            </td>
+                        </tr>
+                    　　@endforeach
                     @else
-                        <li>
-                            現在質問は作成していません
-                        </li>
+                        <tr>
+                            <td>
+                            </td>
+                            <td class="uk-text-right">
+                            </td>
+                            <td class="uk-text-right">
+                            </td>
+                        </tr>
                     @endif
-                </ul>
+                    </tbody>
+                </table>
+
             </div>
         </div>
     </div>
