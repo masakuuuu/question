@@ -22,6 +22,13 @@
                 '                  </div>');
             return false;
         })
+
+        var today = new Date();
+        today.setDate(today.getDate() + 3); // 3日後の日付をセットする
+        var yyyy = today.getFullYear();
+        var mm = ("0"+(today.getMonth()+1)).slice(-2);
+        var dd = ("0"+today.getDate()).slice(-2);
+        $('#limit').val(yyyy+'-'+mm+'-'+dd);
     });
 
 </script>
@@ -83,10 +90,10 @@
                     <label class="uk-form-label uk-text-bold" for="point">持ち点</label>
                     <input class="uk-margin-bottom uk-input" type="text" name="point" id="point_view" value="{{old('point')}}">
                     @if(old('point'))
-                        <input class="uk-range" id="point" type="range" value="{{old('point')}}" min="1" max="100"
+                        <input class="uk-range" id="point" type="range" value="{{old('point')}}" min="1" max="10"
                                step="1">
                     @else
-                        <input class="uk-range" id="point" type="range" value="1" min="1" max="100" step="1">
+                        <input class="uk-range" id="point" type="range" value="1" min="1" max="10" step="1">
                     @endif
                 </div>
 

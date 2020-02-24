@@ -1,4 +1,4 @@
-<div class="uk-section uk-section-muted">
+<div class="uk-section uk-section-muted uk-padding-remove-top">
     <div class="uk-flex uk-flex-center">
 
         <div class="uk-margin-medium-top uk-width-xxlarge">

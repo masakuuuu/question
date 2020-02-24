@@ -1,15 +1,13 @@
 <div class="uk-section uk-section-muted">
     <div class="uk-flex uk-flex-center">
         <div class="uk-card uk-card-default uk-width-1-2@m">
-            @if($isAnswered)
-                <div class="uk-card-body">
+            <div class="uk-card-body uk-padding-remove-bottom">
+                @if($isAnswered)
                     <span class="uk-label uk-label-success">回答済み</span>
-                </div>
-            @else
-                <div class="uk-card-body">
+                @else
                     <span class="uk-label">未回答</span>
-                </div>
-            @endif
+                @endif
+            </div>
             <div class="uk-card-header">
                 <div class="uk-grid-small uk-flex-middle" uk-grid>
                     <div class="uk-width-auto">
@@ -51,18 +49,21 @@
                             </td>
                             <td class="uk-text-center">
                                 @if($answer->user_count > 0)
-                                    <span uk-icon="search" data-toggle="modal" data-target="#exampleModalCenter" onclick="getUserList( {{ $answer->choice_id }} )"></span>
+                                    <span uk-icon="search" data-toggle="modal" data-target="#exampleModalCenter"
+                                          onclick="getUserList( {{ $answer->choice_id }} )"></span>
                                 @endif
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
-
-                <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{ $questionInfo->question_title }}&hashtags=quepon" data-size="large">Tweet</a>
+                <a class="twitter-share-button uk-text-left"
+                   href="https://twitter.com/intent/tweet?text={{ $questionInfo->question_title }}&hashtags=quepon"
+                   data-size="large" style="text-align: left">Tweet</a>
                 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <p class="uk-text-muted uk-text-right" style="text-align: right">締切日： {{ $questionInfo->limit }} </p>
 
-                <p class="uk-text-muted">締切日： {{ $questionInfo->limit }} </p>
+
             </div>
         </div>
     </div>

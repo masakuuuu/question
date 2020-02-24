@@ -16,8 +16,6 @@
 
 <div class="uk-container">
 
-<h1>@yield('title')</h1>
-
 @section('content')
     @show
 

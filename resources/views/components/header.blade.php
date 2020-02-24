@@ -1,7 +1,7 @@
 <nav class="uk-background-primary uk-navbar uk-margin" uk-navbar>
     <div class="uk-navbar-left">
 
-        <a class="uk-navbar-item uk-logo uk-text-bokd" href="/" style="color: #FFFFFF">Que? Pon!</a>
+        <a class="uk-navbar-item uk-logo uk-text-bokd" href="/" style="color: #FFFFFF">QuePon</a>
 
     </div>
 

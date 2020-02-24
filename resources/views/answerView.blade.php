@@ -12,9 +12,9 @@
 
     @include('components.answerUserList')
 
-    @include('components.commentList')
-
     @include('components.sendComment')
+
+    @include('components.commentList')
 
 @endsection
 

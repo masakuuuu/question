@@ -1,3 +1,4 @@
+{{--
 <div class="uk-section uk-section-muted">
     <div class="uk-flex uk-flex-center">
         <div class="uk-card uk-card-default uk-width-1-2@m">
@@ -18,4 +19,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>--}}
