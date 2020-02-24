@@ -23,6 +23,7 @@ class Questions extends Migration
             $table->timestamp('limit');
             $table->string('url_hash')->default(str_random(32))->unique();
             $table->boolean('enable')->default('true');
+            $table->boolean('is_anyone')->default('true');
             $table->boolean('is_open_view')->default('true');
             $table->boolean('is_edit')->default('false');;
             $table->string('edit_password')->nullable();

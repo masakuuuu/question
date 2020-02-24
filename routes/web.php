@@ -38,6 +38,13 @@ Route::get('View','QuestionController@view')->middleware(ViewQuestionMiddleware:
 // アンケートの画面
 Route::get('ViewVoteAnswer','AnswerController@answer')->middleware(AnswerMiddleware::class);
 
+// ゲスト回答画面
+Route::get('GestAnswer','AnswerController@answer')->middleware(AnswerMiddleware::class);
+Route::post('GestAnswerExe','AnswerController@answerExe')->middleware(AnswerMiddleware::class)->middleware(AnswerExeMiddleware::class);
+
+// アンケート結果確認画面
+Route::get('GestViewAnswer','AnswerController@gestViewAnswer')->middleware(ViewAnswerMiddleware::class);
+
 //// アンケート作成画面
 //Route::get('Create','QuestionController@create')->middleware(AuthMiddleware::class);
 //Route::post('CreateExe','QuestionController@createExe')->middleware(CreateQuestionMiddleware::class);

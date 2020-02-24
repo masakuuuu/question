@@ -116,6 +116,9 @@
                 <div class="uk-margin">
                     <div class="uk-form-label uk-text-bold">オプション</div>
                     <div class="uk-form-controls">
+                        <label><input class="uk-checkbox" type="checkbox" name="is_anyone" value="1"
+                                      @if(old('is_anyone')) @if(old('is_anyone') == 1) checked
+                                      @endif @else checked @endif>ゲスト回答許可</label><br>
                         <label><input class="uk-checkbox" type="checkbox" name="is_open_view" value="1"
                                       @if(old('is_open_view')) @if(old('is_open_view') == 1) checked
                                       @endif @else checked @endif> 一般公開</label><br>

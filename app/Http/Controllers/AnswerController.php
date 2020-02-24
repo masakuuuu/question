@@ -32,6 +32,7 @@ class AnswerController extends Controller
                     'isAnswered' => $request->isAnswered,
                     'msg' => '',
                     'questionLimit' => $request->questionLimit,
+                    'isGestAnswer' => $request->isGestAnswer,
                 ]
             );
         }
@@ -78,8 +79,13 @@ class AnswerController extends Controller
             $answers->fill($answerValue)->save();
         }
 
-        return redirect()->action(
-            'AnswerController@viewAnswer', ['url_hash' => $request->url_hash]);
+        if (isset($request->isGestAnswer)) {
+            return redirect()->action(
+                'AnswerController@gestViewAnswer', ['url_hash' => $request->url_hash]);
+        } else {
+            return redirect()->action(
+                'AnswerController@viewAnswer', ['url_hash' => $request->url_hash]);
+        }
     }
 
     /**
@@ -88,6 +94,31 @@ class AnswerController extends Controller
      * @param Request $request
      */
     public function viewAnswer(Request $request)
+    {
+        // URLハッシュから質問情報を取得
+        $questionInfo = QuestionLogicFacade::getQuestionData($request->url_hash);
+        $questionInfo->limit = date('Y年m月d日', strtotime($questionInfo->limit));
+
+        // 投票結果を取得
+        $answerInfo = AnswerLogicFacade::getAnswerData($questionInfo->id);
+
+        return view('answerView',
+            [
+                'isAnswered' => $request->isAnswered,
+                'questionInfo' => $questionInfo,
+                'answerInfo' => $answerInfo,
+                'commentList' => $request->commentList,
+                'shareUrl' => $request->shareUrl,
+            ]
+        );
+    }
+
+    /**
+     * ゲスト用のアンケート結果画面を表示します。
+     *
+     * @param Request $request
+     */
+    public function gestViewAnswer(Request $request)
     {
         // URLハッシュから質問情報を取得
         $questionInfo = QuestionLogicFacade::getQuestionData($request->url_hash);

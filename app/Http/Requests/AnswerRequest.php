@@ -13,7 +13,7 @@ class AnswerRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->path() == 'AnswerExe') {
+        if ($this->path() == 'AnswerExe' || $this->path() == 'GestAnswerExe') {
             return true;
         } else {
             return false;

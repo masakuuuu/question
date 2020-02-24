@@ -1,5 +1,12 @@
 <script>
 
+    $(function () {
+        // ボタン押下でサブミット
+        $('.submit').click(function () {
+            $(this).parents('form').attr('action', $(this).data('action'));
+            $(this).parents('form').submit();
+        });
+    });
 
     function checkVotes() {
         var choiceTotalNum = 0;
@@ -71,7 +78,11 @@
             </div>
             <div class="uk-card-footer">
 
-                @if(session('twitter_user_id'))
+                @foreach($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                @endforeach
+
+                @if(session('twitter_user_id') || isset($isGestAnswer))
                 <div class="uk-flex uk-flex-center">
                     <div>
                         <input type="hidden" id="point" value="{{ $questionInfo->point }}">
@@ -82,6 +93,8 @@
 
                     @if(session('twitter_user_id'))
                         <form action="AnswerExe" method="post">
+                    @elseif(isset($isGestAnswer))
+                        <form action="GestAnswerExe" method="post">
                     @else
                         <form action="Answer" method="get">
                     @endif
@@ -106,7 +119,7 @@
                                 <td>
                                     {{ $choice->choice_text }}
                                 </td>
-                                @if(session('twitter_user_id'))
+                                @if(session('twitter_user_id') || isset($isGestAnswer))
                                 <td>
                                     <a onclick="addVotes({{$choice->id}})" class="uk-icon-button" uk-icon="plus"></a>
                                     <a onclick="subtractVotes({{$choice->id}})" class="uk-icon-button" uk-icon="minus"></a>
@@ -123,19 +136,39 @@
                         </tbody>
                     </table>
 
+                    @if(isset($isGestAnswer))
+                    <div class="uk-margin">
+                        <input type="hidden" name="isGestAnswer" value="true">
+                        <label class="uk-form-label uk-text-muted" for="answerName">回答者名</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="answerName" type="text" name="answer_name"
+                                   value="{{old('answer_name')}}" placeholder="名無しさん">
+                        </div>
+                    </div>
+                    @endif
+
                     <div class="uk-flex uk-flex-center">
                         <p uk-margin>
-                            @if(session('twitter_user_id'))
-                                <button class="uk-button uk-button-default uk-width-small" type="submit">回答</button>
-                                <button class="uk-button uk-button-default uk-width-small" type="submit">キャンセル</button>
+                            @if(session('twitter_user_id') || isset($isGestAnswer))
+                                <button class="uk-button uk-button-default uk-width-small submit">回答</button>
                             @else
-                                <button class="uk-button uk-button-default uk-width-small" type="submit">ログインして回答
-                                </button>
+                                @if($questionInfo->is_anyone)
+                                    <input type="hidden" name="isGestAnswer" value="true">
+                                    <button class="uk-button uk-button-default uk-width-small submit" data-action="GestAnswer">ゲスト回答
+                                    </button>
+                                @endif
+                                    <button class="uk-button uk-button-default uk-width-small submit" data-action="AnswerExe">ログイン回答
+                                    </button>
                             @endif
                         </p>
                     </div>
                 </form>
-                <p class="uk-text-muted">締切日： {{ $questionInfo->limit }} </p>
+
+                <a class="twitter-share-button uk-text-left"
+                   href="https://twitter.com/intent/tweet?text={{ $questionInfo->question_title }}&hashtags=quepon"
+                   data-size="large" style="text-align: left">Tweet</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <p class="uk-text-muted uk-text-right" style="text-align: right">締切日： {{ $questionInfo->limit }} </p>
             </div>
         </div>
     </div>
