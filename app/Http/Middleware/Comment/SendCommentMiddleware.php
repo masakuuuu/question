@@ -25,6 +25,9 @@ class SendCommentMiddleware
         if(session('twitter_user_id')){
             $isAnswered = AnswerLogicFacade::isAnswered($questionInfo->id, session('twitter_user_id'));
             $request->merge(['isAnswered' => $isAnswered]);
+        } else {
+            $isAnswered = AnswerLogicFacade::isAnswered($questionInfo->id, $request->session()->getId());
+            $request->merge(['isAnswered' => $isAnswered]);
         }
 
         $request->merge(['questionInfo' => $questionInfo]);

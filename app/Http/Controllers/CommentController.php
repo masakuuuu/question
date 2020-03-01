@@ -10,20 +10,35 @@ class CommentController extends Controller
     public function sendComment(Request $request)
     {
         // 解答済みのアンケート出ない場合はコメント追加させない
-        if(!$request->isAnswered){
+        if (!$request->isAnswered) {
             return redirect('AnswerController@viewAnswer', ['request' => $request]);
         }
 
         // コメントの登録処理
-        DB::INSERT('INSERT INTO comment_' . $request->questionInfo->id . ' (user_id, user_name, comment) VALUES(:user_id, :user_name, :comment) ',
-            [
-                'user_id' => session('twitter_user_id'),
-                'user_name' => session('name'),
-                'comment' => $request->comment
-            ]);
+        // ログイン済みの場合
+        if (session('twitter_user_id')) {
+            DB::INSERT('INSERT INTO comment_' . $request->questionInfo->id . ' (user_id, user_name, comment) VALUES(:user_id, :user_name, :comment) ',
+                [
+                    'user_id' => session('twitter_user_id'),
+                    'user_name' => session('name'),
+                    'comment' => $request->comment
+                ]);
+        } else {
+            DB::INSERT('INSERT INTO comment_' . $request->questionInfo->id . ' (user_id, user_name, comment) VALUES(:user_id, :user_name, :comment) ',
+                [
+                    'user_id' => $request->session()->getId(),
+                    'user_name' => $request->comment_name,
+                    'comment' => $request->comment
+                ]);
+        }
 
-        return redirect()->action(
-            'AnswerController@viewAnswer', ['url_hash' => $request->url_hash]);
+        if (session('twitter_user_id')) {
+            return redirect()->action(
+                'AnswerController@viewAnswer', ['url_hash' => $request->url_hash]);
+        } else {
+            return redirect()->action(
+                'AnswerController@gestViewAnswer', ['url_hash' => $request->url_hash]);
+        }
 
     }
 }

@@ -48,6 +48,9 @@ Route::get('GestViewAnswer','AnswerController@gestViewAnswer')->middleware(ViewA
 // 回答者一覧の取得
 Route::post('ViewAnsweredUserList','AnswerController@viewAnsweredUser')->middleware(ViewAnswerdUserMiddleware::class);
 
+// コメント投稿処理
+Route::post('SendComment','CommentController@sendComment')->middleware(SendCommentMiddleware::class);
+
 // Twitter認証が必要なページ一覧
 Route::group(['middleware' => 'auth'], function(){
     // アンケート作成画面
@@ -66,7 +69,4 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('Answer','AnswerController@answer')->middleware(AnswerMiddleware::class);
     Route::post('AnswerExe','AnswerController@answerExe')->middleware(AnswerMiddleware::class)->middleware(AnswerExeMiddleware::class);
     Route::get('ViewAnswer','AnswerController@viewAnswer')->middleware(ViewAnswerMiddleware::class);
-
-    // コメント投稿処理
-    Route::post('SendComment','CommentController@sendComment')->middleware(SendCommentMiddleware::class);
 });

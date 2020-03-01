@@ -8,6 +8,8 @@
                     <div class="uk-width-auto">
                         @if (Session::has('profile_image_url_https'))
                             <img class="uk-border-circle" width="40" height="40"  src="{{ Session::get('profile_image_url_https') }}">
+                        @else
+                            <img class="uk-border-circle" width="40" height="40"  src="/img/gest_icon.png">
                         @endif
                     </div>
                     <div class="uk-width-expand">
@@ -15,6 +17,9 @@
                             {{ csrf_field() }}
                             <input type="hidden" name="url_hash" value="{{$questionInfo->url_hash}}">
                             <input type="hidden" name="question_id" value="{{$questionInfo->id}}">
+                            @if (!Session::has('profile_image_url_https'))
+                                <input class="uk-input" id="commentName" type="text" name="comment_name" value="{{old('comment_name')}}" placeholder="名無しさん">
+                            @endif
                             <div class="uk-margin">
                                 <textarea class="uk-textarea" rows="3" name="comment"  placeholder="コメント"></textarea>
                             </div>
