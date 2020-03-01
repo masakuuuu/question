@@ -37,9 +37,12 @@ class AnswerMiddleware
         $choiceInfo = AnswerLogicFacade::getChoiceData($questionInfo->id);
 
         // ログイン認証済みの場合はアンケート情報をチェック
-        if(session('twitter_user_id')){
+        if (session('twitter_user_id')) {
             // 解答済みチェック
             $isAnswered = AnswerLogicFacade::isAnswered($questionInfo->id, session('twitter_user_id'));
+            $request->merge(['isAnswered' => $isAnswered]);
+        } else {
+            $isAnswered = AnswerLogicFacade::isAnswered($questionInfo->id, $request->session()->getId());
             $request->merge(['isAnswered' => $isAnswered]);
         }
 

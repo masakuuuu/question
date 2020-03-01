@@ -66,7 +66,9 @@ FROM (
      */
     public function getAnsweredUserData(int $aChoiceId)
     {
-        return Answers::where('choice_id', $aChoiceId)->get();
+//        return Answers::where('choice_id', $aChoiceId)->get();
+
+        return DB::select("SELECT t1.user_name, t1.votes, t1.updated_at, t2.name, t2.thumbnail FROM answers t1 LEFT JOIN users t2 ON t1.user_id = t2.twitter_id WHERE choice_id = :choice_id", ['choice_id' => $aChoiceId]);
     }
 
     /**
@@ -109,7 +111,7 @@ FROM (
      */
     public function getAnseredUserNum(int $aQuestionId): int
     {
-        $answerInfo = DB::select('SELECT COUNT(DISTINCT(user_id)) AS user_uum FROM answers WHERE question_id = ;id', ['id' => $aQuestionId]);
+        $answerInfo = DB::select('SELECT COUNT(DISTINCT(user_id)) AS user_uum FROM answers WHERE question_id = :id;', ['id' => $aQuestionId]);
         return $answerInfo['user_num'];
     }
 

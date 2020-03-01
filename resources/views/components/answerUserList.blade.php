@@ -38,11 +38,20 @@
                 $('#loading').remove();
 
                 for(var index in data['AnsweredUserData']){
-                    $('#answeredUserDataList').trigger('create').append('<tr>\n' +
-                        '                     <td>' + data["AnsweredUserData"][index].user_name + '</td>"\n' +
-                        '                     <td>' + data["AnsweredUserData"][index].votes + '</td>"\n' +
-                        '                     <td>' + data["AnsweredUserData"][index].updated_at + '</td>"\n' +
-                        '                  </tr>');
+                    if (data["AnsweredUserData"][index].thumbnail) {
+                        $('#answeredUserDataList').trigger('create').append('<tr>\n' +
+                            '                     <td><a href="https://twitter.com/' + data["AnsweredUserData"][index].name + '" target=”_blank"><img class="uk-border-circle uk-margin-small-right" width="25" height="25" src="' + data["AnsweredUserData"][index].thumbnail + '">' + data["AnsweredUserData"][index].user_name + '</a></td>"\n' +
+                            '                     <td>' + data["AnsweredUserData"][index].votes + '</td>"\n' +
+                            '                     <td>' + data["AnsweredUserData"][index].updated_at + '</td>"\n' +
+                            '                  </tr>');
+                    } else {
+                        $('#answeredUserDataList').trigger('create').append('<tr>\n' +
+                            '                     <td><img class="uk-border-circle uk-margin-small-right" width="25" height="25" src="/img/gest_icon.png">' + data["AnsweredUserData"][index].user_name + '</td>"\n' +
+                            '                     <td>' + data["AnsweredUserData"][index].votes + '</td>"\n' +
+                            '                     <td>' + data["AnsweredUserData"][index].updated_at + '</td>"\n' +
+                            '                  </tr>');
+                    }
+
                 }
             })
 
@@ -66,7 +75,7 @@
             </div>
             <div class="modal-body">
 
-                <table class="uk-table uk-table-small uk-table-divider" id="answeredUserDataTable">
+                <table class="uk-table uk-table-small uk-table-divider uk-margin-remove-bottom" id="answeredUserDataTable">
                     <thead>
                     <tr>
                         <th>ユーザ名</th>

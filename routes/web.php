@@ -45,23 +45,8 @@ Route::post('GestAnswerExe','AnswerController@answerExe')->middleware(AnswerMidd
 // アンケート結果確認画面
 Route::get('GestViewAnswer','AnswerController@gestViewAnswer')->middleware(ViewAnswerMiddleware::class);
 
-//// アンケート作成画面
-//Route::get('Create','QuestionController@create')->middleware(AuthMiddleware::class);
-//Route::post('CreateExe','QuestionController@createExe')->middleware(CreateQuestionMiddleware::class);
-
-//// アンケートの再編集
-//Route::get('ReEdit','QuestionController@reEdit')->middleware(EditQuestionMiddleware::class)->middleware(EditChoiceMiddleware::class);
-//Route::post('ReEditExe','QuestionController@reEditExe')->middleware(CreateQuestionMiddleware::class)->middleware(EditQuestionMiddleware::class)->middleware(EditChoiceMiddleware::class);
-//Route::post('CheckEditPassword','QuestionController@checkEditPassword')->middleware(EditQuestionMiddleware::class);
-
-//// アンケート回答画面
-//Route::get('Answer','AnswerController@answer')->middleware(AnswerMiddleware::class);
-//Route::post('AnswerExe','AnswerController@answerExe')->middleware(AnswerMiddleware::class)->middleware(AnswerExeMiddleware::class);
-//Route::get('ViewAnswer','AnswerController@viewAnswer')->middleware(ViewAnswerMiddleware::class);
-//Route::post('ViewAnsweredUserList','AnswerController@viewAnsweredUser')->middleware(ViewAnswerdUserMiddleware::class);
-
-//// コメント投稿処理
-//Route::post('SendComment','CommentController@sendComment')->middleware(SendCommentMiddleware::class);
+// 回答者一覧の取得
+Route::post('ViewAnsweredUserList','AnswerController@viewAnsweredUser')->middleware(ViewAnswerdUserMiddleware::class);
 
 // Twitter認証が必要なページ一覧
 Route::group(['middleware' => 'auth'], function(){
@@ -81,7 +66,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('Answer','AnswerController@answer')->middleware(AnswerMiddleware::class);
     Route::post('AnswerExe','AnswerController@answerExe')->middleware(AnswerMiddleware::class)->middleware(AnswerExeMiddleware::class);
     Route::get('ViewAnswer','AnswerController@viewAnswer')->middleware(ViewAnswerMiddleware::class);
-    Route::post('ViewAnsweredUserList','AnswerController@viewAnsweredUser')->middleware(ViewAnswerdUserMiddleware::class);
 
     // コメント投稿処理
     Route::post('SendComment','CommentController@sendComment')->middleware(SendCommentMiddleware::class);
