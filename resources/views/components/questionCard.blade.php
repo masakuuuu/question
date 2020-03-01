@@ -44,14 +44,14 @@
                                                     <img class="uk-comment-avatar uk-border-circle" src="{{ $question->thumbnail }}" width="60" height="60" alt="">
                                                 </div>
                                                 <div class="uk-width-expand">
-                                                    <h4 class=" uk-margin-remove uk-comment-body"><span class="uk-link-reset uk-text-secondary" style="color: #1b1e21">{{ $question->auther_name }}</span></h4>
+                                                    <h4 class=" uk-margin-remove uk-comment-body"><span class="uk-link-reset uk-text-secondary" style="color: #1b1e21">{{ $question->question_title }}</span></h4>
                                                     <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-                                                        <li><span style="color: #4e555b">12 days ago</span></li>
+                                                        <li><span style="color: #4e555b; text-transform:none">{{ $question->auther_name }}</span></li>
                                                     </ul>
                                                 </div>
                                             </header>
                                             <div class="uk-comment-body uk-text-center uk-text-bold" style="padding: 10px">
-                                                <p>{{ $question->question_title }}</p>
+                                                <p>{{ $question->question_detail }}</p>
                                             </div>
                                         </article>
                                     </div>
