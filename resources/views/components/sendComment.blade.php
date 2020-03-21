@@ -25,14 +25,21 @@
         $.ajax({
             url: 'GetNextComment',
             type: 'POST',
-            data: {'connmentId': minId}
+            data: {
+                'url_hash' : '{{$questionInfo->url_hash}}',
+                'commentId': minId
+            }
         })
 
             .done(function(data) {
+                if(data['nextCommentList'].length < 5){
+                    $('#getNextComment').html('<p class="uk-text-muted">コメントをすべて読み込みました</p>')                    
+                }
 
                 for(var index in data['nextCommentList']){
+                    if(data["nextCommentList"][index].name){
                     $('#commentList').trigger('create').append('<li>\n' +
-                            '<a class="uk-link-heading" target="_brank" href="' + data["nextCommentList"][index].name + '">' + 
+                            '<a class="uk-link-heading" target="_brank" href="https://twitter.com/' + data["nextCommentList"][index].name + '">' + 
                             '<div class="uk-grid-small uk-flex-middle" uk-grid>' + 
                             '<div class="uk-width-auto">' + 
                             '<img class="uk-border-circle" width="40" height="40" src="'  + data["nextCommentList"][index].thumbnail +  '">' + 
@@ -44,6 +51,19 @@
                             '</div>' +
                             '</div>' +
                             '</a>');
+                    } else {
+                        $('#commentList').trigger('create').append('<li>\n' +
+                            '<div class="uk-grid-small uk-flex-middle" uk-grid>' + 
+                            '<div class="uk-width-auto">' + 
+                            '<img class="uk-border-circle" width="40" height="40" src="/img/gest_icon.png">' + 
+                            '</div>' +
+                            '<div class="uk-width-expand">' +
+                            '<input type="hidden" class="commentIds" value="'+ data["nextCommentList"][index].id + '">' + 
+                            '<p class="uk-text-bold uk-margin-remove-bottom"><span>'+ data["nextCommentList"][index].user_name + '</span><span class="uk-text-muted uk-margin-small-left">' + data["nextCommentList"][index].created_at + '</span></p>' +
+                            '<p class="uk-margin-remove-top">' + data["nextCommentList"][index].comment + '</p>' +
+                            '</div>' +
+                            '</div>');
+                    }
                 }
             })
 
@@ -121,12 +141,10 @@
                     @endif
                 </ul>
             </div>
-            <div class="uk-card-footer">
-                <a href="#" class="uk-button uk-button-text">さらに読み込む</a>
+            <div id="getNextComment" class="uk-card-footer">
+                <a href="#" class="uk-button uk-button-text" onClick="getNextComment();return false">さらに読み込む</a>
             </div>
         </div>
 
     </div>
 </div>
-
-<input type='button' onClick="getNextComment()">
