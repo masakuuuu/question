@@ -88,9 +88,15 @@ class QuestionLogic
         return Questions::where('auther_id', $aUserId)->get();
     }
 
-    public function isAuther(int $aQuestionId, String $sessionId){
+    /**
+     * 投稿者かどうかをチェックする
+     * 
+     * @param int    $aQuestionId 質問ID
+     * @param String $aSessionId  セッションID
+     */
+    public function isAuther(int $aQuestionId, String $aSessionId){
         $isAuther = false;
-        if(Questions::where('id', $aQuestionId)->where('auther_id', $sessionId)->exists()){
+        if(Questions::where('id', $aQuestionId)->where('auther_id', $aSessionId)->exists()){
             $isAuther = true;
         }
         return $isAuther;

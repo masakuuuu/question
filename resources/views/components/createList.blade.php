@@ -8,7 +8,6 @@
                     <tr>
                         <th class="uk-text-center">タイトル</th>
                         <th class="uk-text-center">回答期限</th>
-                        <th class="uk-text-center">回答数</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -21,9 +20,6 @@
                             </td>
                             <td class="uk-text-right">
                                 {{ $question->limit }}
-                            </td>
-                            <td class="uk-text-right">
-                                ここに回答数が表示される
                             </td>
                         </tr>
                     　　@endforeach
