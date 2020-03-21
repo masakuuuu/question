@@ -20,6 +20,7 @@ use App\Http\Middleware\Answer\AnswerExeMiddleware;
 use App\Http\Middleware\Answer\ViewAnswerMiddleware;
 use App\Http\Middleware\Answer\ViewAnswerdUserMiddleware;
 use App\Http\Middleware\Comment\SendCommentMiddleware;
+use App\Http\Middleware\Comment\GetNextCommentMiddleware;
 use App\Http\Middleware\Auth\AuthMiddleware;
 
 // ユーザ登録画面
@@ -50,6 +51,9 @@ Route::post('ViewAnsweredUserList','AnswerController@viewAnsweredUser')->middlew
 
 // コメント投稿処理
 Route::post('SendComment','CommentController@sendComment')->middleware(SendCommentMiddleware::class);
+
+// 続きのコメント取得処理
+Route::post('GetNextComment','CommentController@getNextComment')->middleware(GetNextCommentMiddleware::class);
 
 // Twitter認証が必要なページ一覧
 Route::group(['middleware' => 'auth'], function(){

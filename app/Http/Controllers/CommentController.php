@@ -47,4 +47,13 @@ class CommentController extends Controller
         }
 
     }
+
+    /**
+     * 続きのコメント取得する
+     */
+    public function getNextComment(Request $request){
+        return [
+            'nextCommentList' => $request->nextCommentList
+        ];
+    }
 }

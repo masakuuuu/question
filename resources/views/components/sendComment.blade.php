@@ -1,3 +1,60 @@
+<script>
+    function getNextComment(){
+        // 設定値の宣言
+        let minGetFlg = true;
+        let minId = null;
+
+        $('.commentIds').each(function(index, value){
+            // 最初のみ1つ目のIDを取得
+            if(minGetFlg){
+                minId = this.value;
+                minGetFlg = false;
+            }
+            // 一番小さいIDを取得します
+            if(minId > this.value){
+                minId =  this.value;
+            }
+        })
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            url: 'GetNextComment',
+            type: 'POST',
+            data: {'connmentId': minId}
+        })
+
+            .done(function(data) {
+
+                for(var index in data['nextCommentList']){
+                    $('#commentList').trigger('create').append('<li>\n' +
+                            '<a class="uk-link-heading" target="_brank" href="' + data["nextCommentList"][index].name + '">' + 
+                            '<div class="uk-grid-small uk-flex-middle" uk-grid>' + 
+                            '<div class="uk-width-auto">' + 
+                            '<img class="uk-border-circle" width="40" height="40" src="'  + data["nextCommentList"][index].thumbnail +  '">' + 
+                            '</div>' +
+                            '<div class="uk-width-expand">' +
+                            '<input type="hidden" class="commentIds" value="'+ data["nextCommentList"][index].id + '">' + 
+                            '<p class="uk-text-bold uk-margin-remove-bottom"><span>'+ data["nextCommentList"][index].user_name + '</span><span class="uk-text-muted uk-margin-small-left">' + data["nextCommentList"][index].created_at + '</span></p>' +
+                            '<p class="uk-margin-remove-top">' + data["nextCommentList"][index].comment + '</p>' +
+                            '</div>' +
+                            '</div>' +
+                            '</a>');
+                }
+            })
+
+            .fail(function() {
+                alert('エラー');
+            });
+
+        }
+
+    </script>
+
 <div class="uk-section uk-section-muted uk-padding-remove-top">
     <div class="uk-flex uk-flex-center">
 
@@ -29,7 +86,7 @@
                 </div>
             </div>
             <div class="uk-card-body">
-                <ul id="newQuestion" class="uk-list uk-list-divider">
+                <ul id="commentList" class="uk-list uk-list-divider">
                     @if(count($commentList))
                         @foreach($commentList as $comment)
                         <li>
@@ -45,6 +102,7 @@
                                     @endif
                                     </div>
                                     <div class="uk-width-expand">
+                                        <input type="hidden" class="commentIds" value="{{ $comment->id }}">
                                         <p class="uk-text-bold uk-margin-remove-bottom"><span>{{ $comment->user_name }}</span><span class="uk-text-muted uk-margin-small-left">{{ $comment->created_at }}</span></p>
                                         <p class="uk-margin-remove-top">
                                         {{ $comment->comment }}
@@ -71,4 +129,4 @@
     </div>
 </div>
 
-
+<input type='button' onClick="getNextComment()">
