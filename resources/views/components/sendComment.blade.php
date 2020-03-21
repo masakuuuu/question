@@ -45,7 +45,7 @@
                                     @endif
                                     </div>
                                     <div class="uk-width-expand">
-                                        <p class="uk-text-bold uk-margin-remove-bottom"><span>{{ $comment->user_name }}</span><span class="uk-text-muted uk-margin-small-left">aaaa</span></p>
+                                        <p class="uk-text-bold uk-margin-remove-bottom"><span>{{ $comment->user_name }}</span><span class="uk-text-muted uk-margin-small-left">{{ $comment->created_at }}</span></p>
                                         <p class="uk-margin-remove-top">
                                         {{ $comment->comment }}
                                         </p>
