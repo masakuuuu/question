@@ -16,19 +16,25 @@ class CommentController extends Controller
 
         // コメントの登録処理
         // ログイン済みの場合
+        $insertDate = date("Y-m-d H:i:s", time());
+        
         if (session('twitter_user_id')) {
-            DB::INSERT('INSERT INTO comment_' . $request->questionInfo->id . ' (user_id, user_name, comment) VALUES(:user_id, :user_name, :comment) ',
+            DB::INSERT('INSERT INTO comment_' . $request->questionInfo->id . ' (user_id, user_name, comment, created_at, updated_at) VALUES(:user_id, :user_name, :comment, :created_at, :updated_at) ',
                 [
                     'user_id' => session('twitter_user_id'),
                     'user_name' => session('name'),
-                    'comment' => $request->comment
+                    'comment' => $request->comment,
+                    'created_at' => $insertDate,
+                    'updated_at' => $insertDate
                 ]);
         } else {
-            DB::INSERT('INSERT INTO comment_' . $request->questionInfo->id . ' (user_id, user_name, comment) VALUES(:user_id, :user_name, :comment) ',
+            DB::INSERT('INSERT INTO comment_' . $request->questionInfo->id . ' (user_id, user_name, comment, created_at, updated_at) VALUES(:user_id, :user_name, :comment, :created_at, :updated_at) ',
                 [
                     'user_id' => $request->session()->getId(),
                     'user_name' => $request->comment_name,
-                    'comment' => $request->comment
+                    'comment' => $request->comment,
+                    'created_at' => $insertDate,
+                    'updated_at' => $insertDate
                 ]);
         }
 
