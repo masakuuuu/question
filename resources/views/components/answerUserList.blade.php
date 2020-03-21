@@ -41,13 +41,13 @@
                     if (data["AnsweredUserData"][index].thumbnail) {
                         $('#answeredUserDataList').trigger('create').append('<tr>\n' +
                             '                     <td><a href="https://twitter.com/' + data["AnsweredUserData"][index].name + '" target=”_blank"><img class="uk-border-circle uk-margin-small-right" width="25" height="25" src="' + data["AnsweredUserData"][index].thumbnail + '">' + data["AnsweredUserData"][index].user_name + '</a></td>"\n' +
-                            '                     <td>' + data["AnsweredUserData"][index].votes + '</td>"\n' +
+                            '                     <td class="uk-text-right">' + data["AnsweredUserData"][index].votes + '</td>"\n' +
                             '                     <td>' + data["AnsweredUserData"][index].updated_at + '</td>"\n' +
                             '                  </tr>');
                     } else {
                         $('#answeredUserDataList').trigger('create').append('<tr>\n' +
                             '                     <td><img class="uk-border-circle uk-margin-small-right" width="25" height="25" src="/img/gest_icon.png">' + data["AnsweredUserData"][index].user_name + '</td>"\n' +
-                            '                     <td>' + data["AnsweredUserData"][index].votes + '</td>"\n' +
+                            '                     <td class="uk-text-right">' + data["AnsweredUserData"][index].votes + '</td>"\n' +
                             '                     <td>' + data["AnsweredUserData"][index].updated_at + '</td>"\n' +
                             '                  </tr>');
                     }
