@@ -30,7 +30,7 @@ class QuestionLogic
     public function getQuestionData(String $aUrl_hash)
     {
         $param = ['url_hash' => $aUrl_hash];
-        $questionData = DB::select('SELECT t1.id, t1.auther_name, t1.question_title, t1.question_detail, t1.limit, t1.url_hash, t1.enable,t1.is_anyone , t1.is_open_view, t1.is_edit, t1.edit_password, t1.point, t2.thumbnail FROM questions t1 INNER JOIN users t2 ON t1.auther_id = t2.twitter_id WHERE t1.url_hash = :url_hash limit 1', $param);
+        $questionData = DB::select('SELECT t1.id, t1.auther_name, t1.question_title, t1.question_detail, t1.limit, t1.url_hash, t1.enable,t1.is_anyone , t1.is_open_view, t1.is_edit, t1.edit_password, t1.point, t2.thumbnail, t2.name FROM questions t1 INNER JOIN users t2 ON t1.auther_id = t2.twitter_id WHERE t1.url_hash = :url_hash limit 1', $param);
         return $questionData[0];
 
 //        return Questions::where('url_hash', $aUrl_hash)->first();

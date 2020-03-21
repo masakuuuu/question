@@ -32,22 +32,29 @@
                 <ul id="newQuestion" class="uk-list uk-list-divider">
                     @if(count($commentList))
                         @foreach($commentList as $comment)
-
-                        <div class="uk-grid-small uk-flex-middle" uk-grid>
-                            <div class="uk-width-auto">
-                            @if($comment->thumbnail)
-                                <img class="uk-border-circle" width="40" height="40" src="{{ $comment->thumbnail }}">
-                            @else
-                                <img class="uk-border-circle" width="40" height="40" src="/img/gest_icon.png">
+                        <li>
+                            @if($comment->name)
+                            <a class="uk-link-heading" target="_brank" href="https://twitter.com/{{ $comment->name }}">
                             @endif
-                            </div>
-                            <div class="uk-width-expand">
-                                <p class="uk-text-bold uk-margin-remove-bottom">{{ $comment->user_name }}</p>
-                                <p class="uk-margin-remove-top">
-                                {{ $comment->comment }}
-                                </p>
-                            </div>
-                        </div>
+                                <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                    <div class="uk-width-auto">
+                                    @if($comment->thumbnail)
+                                        <img class="uk-border-circle" width="40" height="40" src="{{ $comment->thumbnail }}">
+                                    @else
+                                        <img class="uk-border-circle" width="40" height="40" src="/img/gest_icon.png">
+                                    @endif
+                                    </div>
+                                    <div class="uk-width-expand">
+                                        <p class="uk-text-bold uk-margin-remove-bottom">{{ $comment->user_name }}</p>
+                                        <p class="uk-margin-remove-top">
+                                        {{ $comment->comment }}
+                                        </p>
+                                    </div>
+                                </div>
+                            @if($comment->name)
+                            </a>
+                            @endif
+                        </li>
                         @endforeach
                     @else
                         <li>
