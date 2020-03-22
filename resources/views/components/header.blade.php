@@ -24,7 +24,7 @@
                             <li><a href="Logout">ログアウト</a></li>
                         @else
                             <li class="uk-nav-divider"></li>
-                            <li><a href="OAuth">ログイン</a></li>
+                            <li><a href="OAuth"><span class="uk-margin-small-right" uk-icon="twitter"></span>ログイン</a></li>
                         @endif
                     </ul>
                 </div>

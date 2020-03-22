@@ -26,6 +26,19 @@ class CreateQuestionMiddleware
             }
         }
 
+        // オプションの定数定義
+        define('OPTIONS', 
+        [
+            'is_anyone'=> 1,
+            'is_open_view' => 2,
+            'is_edit' => 3,
+        ]);
+        
+        // オプション未設定の場合は 空の配列 で初期化する
+        if(!isset($form['options'])){
+            $form['options'] = [];
+        }
+
         // アンケートテーブルの中身を生成
         $questionArray = [
             'question_title' => $form['question_title'],
@@ -34,8 +47,9 @@ class CreateQuestionMiddleware
             'auther_id' => session('twitter_user_id'),
             'auther_name' => session('name'),
             'twitter_id' => session('screen_name'),
-            'is_open_view' => isset($form['is_open_view']) ? $form['is_open_view'] : true,
-            'is_edit' => isset($form['is_edit']) ? $form['is_edit'] : false,
+            'is_anyone' => in_array(OPTIONS['is_anyone'], $form['options']) ? true : false,
+            'is_open_view' => in_array(OPTIONS['is_open_view'], $form['options']) ? true : false,
+            'is_edit' => in_array(OPTIONS['is_edit'], $form['options']) ? true : false,
             'edit_password' => isset($form['edit_password']) ? encrypt($form['edit_password']) : null,
             'point' => $form['point'],
             'url_hash' => $hash,

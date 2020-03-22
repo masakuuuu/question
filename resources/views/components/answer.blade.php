@@ -84,6 +84,10 @@
                     <div class="uk-text-warning">{{ $error }}</div>
                 @endforeach
 
+                @if($msg)
+                    <div class="uk-text-warning">{{ $msg }}</div>
+                @endif
+
                 @if(session('twitter_user_id') || isset($isGestAnswer))
                 <div class="uk-flex uk-flex-center">
                     <div>

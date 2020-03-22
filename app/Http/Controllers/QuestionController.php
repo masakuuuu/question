@@ -100,6 +100,10 @@ class QuestionController extends Controller
 
     public function viewList()
     {
-        return view('createList', ['questionsList' => QuestionLogicFacade::getQuestionsList(session('twitter_user_id'))]);
+       $questionsList = QuestionLogicFacade::getQuestionsList(session('twitter_user_id'));
+       foreach($questionsList as $question){
+        $question->limit = date('Y年m月d日', strtotime($question->limit));   
+       }
+        return view('createList', ['questionsList' => $questionsList]);
     }
 }

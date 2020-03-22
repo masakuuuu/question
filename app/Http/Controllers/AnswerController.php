@@ -63,7 +63,7 @@ class AnswerController extends Controller
 
         // 投票数の条件チェック
         if ($request->questionInfo->point != $request->totalVotes) {
-            return view('answer.answer',
+            return view('answer',
                 [
                     'questionInfo' => $request->questionInfo,
                     'choiceInfo' => $request->choiceInfo,

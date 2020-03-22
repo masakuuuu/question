@@ -85,7 +85,7 @@ class QuestionLogic
      * @return mixed  ユーザに紐づく質問のリスト
      */
     public function getQuestionsList(String $aUserId){
-        return Questions::where('auther_id', $aUserId)->get();
+        return Questions::where('auther_id', $aUserId)->orderBy('id', 'desc')->paginate(10);;
     }
 
     /**
