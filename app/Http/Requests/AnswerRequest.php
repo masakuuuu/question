@@ -31,6 +31,7 @@ class AnswerRequest extends FormRequest
             'answersInfo.*.question_id' => 'required|integer',
             'answersInfo.*.choice_id' => 'required|integer',
             'answersInfo.*.votes.*' => 'required|integer',
+            'answer_name' => 'required',
         ];
     }
 
@@ -48,6 +49,7 @@ class AnswerRequest extends FormRequest
             'answersInfo.*.choice_id.integer' => '選択肢IDは整数値で入力してください',
             'answersInfo.*.votes.required' => '投票数を入力してください',
             'answersInfo.*.votes.integer' => '投票数は整数値で入力してください',
+            'answer_name.required' => '回答者名を入力してください',
         ];
     }
 }

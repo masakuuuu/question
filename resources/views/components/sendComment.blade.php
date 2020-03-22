@@ -90,15 +90,18 @@
                         @endif
                     </div>
                     <div class="uk-width-expand">
+                        @foreach($errors->all() as $error)
+                            <div class="uk-text-warning">{{ $error }}</div>
+                        @endforeach
                         <form action="SendComment" method="post">
                             {{ csrf_field() }}
                             <input type="hidden" name="url_hash" value="{{$questionInfo->url_hash}}">
                             <input type="hidden" name="question_id" value="{{$questionInfo->id}}">
                             @if (!Session::has('profile_image_url_https'))
-                                <input class="uk-input" id="commentName" type="text" name="comment_name" value="{{old('comment_name')}}" placeholder="名無しさん">
+                                <input class="uk-input" id="commentName" type="text" name="comment_name" value="{{old('comment_name')}}" placeholder="投稿者名">
                             @endif
                             <div class="uk-margin">
-                                <textarea class="uk-textarea" rows="3" name="comment"  placeholder="コメント"></textarea>
+                                <textarea class="uk-textarea" rows="3" name="comment"  placeholder="コメント">{{old('comment')}}</textarea>
                             </div>
                             <button class="uk-button uk-button-primary uk-button-small" type="submit" >送信</button>
                         </form>

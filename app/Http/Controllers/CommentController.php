@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller
 {
-    public function sendComment(Request $request)
+    public function sendComment(CommentRequest $request)
     {
         // 解答済みのアンケート出ない場合はコメント追加させない
         if (!$request->isAnswered) {

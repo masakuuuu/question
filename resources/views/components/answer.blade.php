@@ -81,7 +81,7 @@
             <div class="uk-card-footer">
 
                 @foreach($errors->all() as $error)
-                    <div>{{ $error }}</div>
+                    <div class="uk-text-warning">{{ $error }}</div>
                 @endforeach
 
                 @if(session('twitter_user_id') || isset($isGestAnswer))
@@ -141,10 +141,9 @@
                     @if(isset($isGestAnswer))
                     <div class="uk-margin">
                         <input type="hidden" name="isGestAnswer" value="true">
-                        <label class="uk-form-label uk-text-muted" for="answerName">回答者名</label>
                         <div class="uk-form-controls">
                             <input class="uk-input" id="answerName" type="text" name="answer_name"
-                                   value="{{old('answer_name')}}" placeholder="名無しさん">
+                                   value="{{old('answer_name')}}" placeholder="回答者名">
                         </div>
                     </div>
                     @endif

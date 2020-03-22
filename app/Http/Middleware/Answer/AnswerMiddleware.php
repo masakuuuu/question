@@ -41,6 +41,8 @@ class AnswerMiddleware
             // 解答済みチェック
             $isAnswered = AnswerLogicFacade::isAnswered($questionInfo->id, session('twitter_user_id'));
             $request->merge(['isAnswered' => $isAnswered]);
+            // 回答者名を折衝からセット
+            $request->merge(['answer_name' => session('name')]);
         } else {
             $isAnswered = AnswerLogicFacade::isAnswered($questionInfo->id, $request->session()->getId());
             $request->merge(['isAnswered' => $isAnswered]);

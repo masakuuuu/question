@@ -41,7 +41,7 @@
             <fieldset class="uk-fieldset uk-width-xlarge">
 
                 @foreach($errors->all() as $error)
-                    <div>{{ $error }}</div>
+                    <div class="uk-text-warning">{{ $error }}</div>
                 @endforeach
 
                 {{ csrf_field() }}
@@ -95,14 +95,6 @@
                     @else
                         <input class="uk-range" id="point" type="range" value="1" min="1" max="10" step="1">
                     @endif
-                </div>
-
-                <div class="uk-margin">
-                    <label class="uk-form-label uk-text-bold" for="autherName">投稿者名</label>
-                    <div class="uk-form-controls">
-                        <input class="uk-input" id="autherName" type="text" name="auther_name"
-                               value="{{old('auther_name')}}" placeholder="名無しさん">
-                    </div>
                 </div>
 
                 <div class="uk-margin">
