@@ -21,7 +21,7 @@
                             <td>
                                 <a href="ViewAnswer?url_hash={{ $question->url_hash }}">{{ $question->question_title }}</a>
                             </td>
-                            <td class="uk-text-right">
+                            <td class="uk-text-center">
                                 {{ $question->limit }}
                             </td>
                             <td class="uk-text-center">
@@ -40,6 +40,7 @@
                             </td>
                             <td class="uk-text-center">
                                 @if($question->is_edit)
+                                <button class="uk-button uk-button-primary uk-button-small">編集</button>
                                 @endif
                             </td>
                         </tr>
