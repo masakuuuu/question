@@ -50,7 +50,6 @@ class CreateQuestionMiddleware
             'is_anyone' => in_array(OPTIONS['is_anyone'], $form['options']) ? true : false,
             'is_open_view' => in_array(OPTIONS['is_open_view'], $form['options']) ? true : false,
             'is_edit' => in_array(OPTIONS['is_edit'], $form['options']) ? true : false,
-            'edit_password' => isset($form['edit_password']) ? encrypt($form['edit_password']) : null,
             'point' => $form['point'],
             'url_hash' => $hash,
         ];

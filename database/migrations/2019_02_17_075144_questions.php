@@ -25,8 +25,7 @@ class Questions extends Migration
             $table->boolean('enable')->default('true');
             $table->boolean('is_anyone')->default('true');
             $table->boolean('is_open_view')->default('true');
-            $table->boolean('is_edit')->default('false');;
-            $table->string('edit_password')->nullable();
+            $table->boolean('is_edit')->default('false');
             $table->integer('point')->default(10);
             $table->timestamps();
         });

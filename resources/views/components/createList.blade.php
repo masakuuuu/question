@@ -7,17 +7,22 @@
                 <table class="uk-table uk-table-hover uk-table-divider">
                     <thead>
                     <tr>
+                        <th class="uk-text-center"></th>
                         <th class="uk-text-center">タイトル</th>
                         <th class="uk-text-center">回答期限</th>
                         <th class="uk-text-center">ゲストの回答</th>
                         <th class="uk-text-center">公開レベル</th>
-                        <th class="uk-text-center"></th>
                     </tr>
                     </thead>
                     <tbody>
 
                         @foreach($questionsList as $question)
                         <tr>
+                            <td class="uk-text-center">
+                                @if($question->is_edit)
+                                <a href="ReEdit?url_hash={{ $question->url_hash }}" class="uk-icon-link uk-text-bold uk-text-primary" uk-icon="pencil"></a>
+                                @endif
+                            </td>
                             <td>
                                 <a href="ViewAnswer?url_hash={{ $question->url_hash }}">{{ $question->question_title }}</a>
                             </td>
@@ -36,11 +41,6 @@
                                 <span class="uk-label">一般</span>
                                 @else
                                 <span class="uk-label uk-label-warning">限定</span>
-                                @endif
-                            </td>
-                            <td class="uk-text-center">
-                                @if($question->is_edit)
-                                <button class="uk-button uk-button-primary uk-button-small">編集</button>
                                 @endif
                             </td>
                         </tr>

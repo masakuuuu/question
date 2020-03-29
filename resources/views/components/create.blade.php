@@ -2,13 +2,6 @@
     $(function () {
 
         $('#point_view').val($('#point').val());
-        if($('#is_edit').prop('checked')){
-            $('#password_form').show();
-        }
-
-        $('#is_edit').on('click', function () {
-            $('#password_form').toggle();
-        });
 
         $('#point').on('input', function () {
             $('#point_view').val($('#point').val());
@@ -109,20 +102,14 @@
                     <div class="uk-form-label uk-text-bold">オプション</div>
                     <div class="uk-form-controls">
                         <label><input class="uk-checkbox" type="checkbox" name="options[]" value="1"
-                                      @if(old('is_anyone')) @if(old('is_anyone') == 1) checked
+                                      @if(old('options')) @if(in_array('1', old('options'))) checked
                                       @endif @else checked @endif> ゲストの回答を許可</label><br>
                         <label><input class="uk-checkbox" type="checkbox" name="options[]" value="2"
-                                      @if(old('is_open_view')) @if(old('is_open_view') == 1) checked
+                                      @if(old('options')) @if(in_array('2', old('options'))) checked
                                       @endif @else checked @endif> 一般公開</label><br>
                         <label><input class="uk-checkbox" type="checkbox" id="is_edit" name="options[]" value="3"
-                                      @if(old('is_edit') == 1) checked @endif> 編集可能</label>
-                    </div>
-                </div>
-
-                <div class="uk-margin" id="password_form" style="display: none">
-                    <label class="uk-form-label uk-text-bold" for="edit_password">編集パスワード</label>
-                    <div class="uk-form-controls">
-                        <input class="uk-input" id="edit_password" type="password" name="edit_password">
+                                      @if(old('options')) @if(in_array('3', old('options'))) checked
+                                      @endif @endif> 投稿後の編集可能</label>
                     </div>
                 </div>
 

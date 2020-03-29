@@ -64,7 +64,6 @@ Route::group(['middleware' => 'auth'], function(){
     // アンケートの再編集
     Route::get('ReEdit','QuestionController@reEdit')->middleware(EditQuestionMiddleware::class)->middleware(EditChoiceMiddleware::class);
     Route::post('ReEditExe','QuestionController@reEditExe')->middleware(CreateQuestionMiddleware::class)->middleware(EditQuestionMiddleware::class)->middleware(EditChoiceMiddleware::class);
-    Route::post('CheckEditPassword','QuestionController@checkEditPassword')->middleware(EditQuestionMiddleware::class);
 
     // アンケート一覧画面
     Route::get('ViewQuestionsList','QuestionController@viewList');

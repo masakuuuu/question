@@ -64,7 +64,7 @@ class QuestionController extends Controller
         return view("questionView",
             [
                 'questionInfo' => $request->questionInfo,
-                'choiceInfo' => $request->choiceInfo,
+                'choiceInfo' => $request->choiceText,
                 'shareUrl' => $request->shareUrl,
             ]
         );
@@ -73,29 +73,22 @@ class QuestionController extends Controller
     public function reEdit(Request $request)
     {
         $form = $request->all();
-        return view("question.edit", ['oldQuestionInfo' => $form['oldQuestionInfo'], 'choiceText' => $form['choiceText'], 'reEdit' => true]);
+        return view("edit",
+            [
+                    'oldQuestionInfo' => $form['oldQuestionInfo'],
+                    'choiceInfo' => $form['choiceText'],
+                    'reEdit' => true
+            ]
+        );
     }
 
     public function reEditExe(QuestionRequest $request)
     {
         $form = $request->all();
-        // パスワードが正しければ元のアンケートを削除して新しいものを登録します
-        if ($form['edit_password'] == decrypt($form['oldQuestionInfo']->edit_password)) {
-            Answers::where('question_id', $form['oldQuestionInfo']->id)->delete();
-            Choices::where('question_id', $form['oldQuestionInfo']->id)->delete();
-            Questions::where('id', $form['oldQuestionInfo']->id)->delete();
-            return $this->createExe($request);
-        }
-        return view("question.edit", ['msg' => 'パスワードが違います', 'oldQuestionInfo' => $form['oldQuestionInfo'], 'choiceText' => $form['choiceText'], 'reEdit' => true]);
-    }
-
-    public function checkEditPassword(ReEditQuestionRequest $request)
-    {
-        $form = $request->all();
-        if ($form['re_edit_password'] == decrypt($form['oldQuestionInfo']->edit_password)) {
-            return ['result' => true];
-        }
-        return ['result' => false];
+        Answers::where('question_id', $form['oldQuestionInfo']->id)->delete();
+        Choices::where('question_id', $form['oldQuestionInfo']->id)->delete();
+        Questions::where('id', $form['oldQuestionInfo']->id)->delete();
+        return $this->createExe($request);
     }
 
     public function viewList()
