@@ -1,6 +1,9 @@
 <div class="uk-section uk-section-muted">
     <div class="uk-flex uk-flex-center">
         <div class="uk-card uk-card-default uk-width-1-2@m">
+            @if($message)
+            <div class="uk-text-warning uk-text-center uk-margin-small-top">{{ $message }}</div>
+            @endif
             <div class="uk-margin">
 
                 @if(count($questionsList))
@@ -12,6 +15,7 @@
                         <th class="uk-text-center">回答期限</th>
                         <th class="uk-text-center">ゲストの回答</th>
                         <th class="uk-text-center">公開レベル</th>
+                        <th class="uk-text-center"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -42,6 +46,9 @@
                                 @else
                                 <span class="uk-label uk-label-warning">限定</span>
                                 @endif
+                            </td>
+                            <td class="uk-text-center">
+                                <a href="Delete?questionId={{ $question->id }}" class="uk-icon-link uk-text-bold uk-text-danger" uk-icon="trash"></a>
                             </td>
                         </tr>
                     　　@endforeach

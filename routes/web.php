@@ -65,6 +65,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('ReEdit','QuestionController@reEdit')->middleware(EditQuestionMiddleware::class)->middleware(EditChoiceMiddleware::class);
     Route::post('ReEditExe','QuestionController@reEditExe')->middleware(CreateQuestionMiddleware::class)->middleware(EditQuestionMiddleware::class)->middleware(EditChoiceMiddleware::class);
 
+    // アンケートの削除
+    Route::get('Delete','QuestionController@delete');
+
     // アンケート一覧画面
     Route::get('ViewQuestionsList','QuestionController@viewList');
 

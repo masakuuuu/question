@@ -91,12 +91,32 @@ class QuestionController extends Controller
         return $this->createExe($request);
     }
 
-    public function viewList()
+    /**
+     * 質問データの削除
+     */
+    public function delete(Request $request)
+    {
+        $form = $request->all();
+        $message = "";
+        // 照合に失敗した場合はそのまま元の画面に返す
+        if(QuestionLogicFacade::isAuther($form['questionId'], session('twitter_user_id'))){
+            if(QuestionLogicFacade::deleteQuestion($form['questionId'], session('twitter_user_id'))){
+                $message = "質問情報を削除しました";
+            }else{
+                $message = "質問情報の削除に失敗しました";
+            }
+        }else{
+            $message = "質問情報の照合に失敗しました";
+        }
+        return $this->viewList($message);
+    }
+
+    public function viewList(String $aMessage = '')
     {
        $questionsList = QuestionLogicFacade::getQuestionsList(session('twitter_user_id'));
        foreach($questionsList as $question){
         $question->limit = date('Y年m月d日', strtotime($question->limit));   
        }
-        return view('createList', ['questionsList' => $questionsList]);
+        return view('createList', ['questionsList' => $questionsList, 'message' => $aMessage]);
     }
 }

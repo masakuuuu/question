@@ -11,6 +11,7 @@ namespace App\Logic;
 use App\Choices;
 use Illuminate\Support\Facades\DB;
 use App\Questions;
+use Illuminate\Support\Facades\Schema;
 
 /**
  * Class QuestionLogic
@@ -100,5 +101,30 @@ class QuestionLogic
             $isAuther = true;
         }
         return $isAuther;
+    }
+
+    /**
+     * 質問データを策書する
+     * 質問に紐づく回答データやコメントのデータも削除します
+     * 
+     * @param int    $aQuestionId 質問ID
+     * @param String $aSessionId  セッションID
+     */
+    public function deleteQuestion(int $aQuestionId, String $aSessionId) : bool
+    {
+        $result = false;
+        DB::beginTransaction();
+        try {
+            Schema::drop('comment_' . $aQuestionId);
+            Schema::drop('answers_' . $aQuestionId);
+            Choices::where('question_id', $aQuestionId)->delete();
+            Questions::where('id', $aQuestionId)->delete();
+            DB::commit();
+            $result = true;
+        } catch (\Exception $e) {
+            DB::rollBack();
+        }
+
+        return $result;
     }
 }
