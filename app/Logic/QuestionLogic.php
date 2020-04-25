@@ -11,6 +11,7 @@ namespace App\Logic;
 use App\Choices;
 use Illuminate\Support\Facades\DB;
 use App\Questions;
+use App\Answers;
 use Illuminate\Support\Facades\Schema;
 
 /**
@@ -117,6 +118,7 @@ class QuestionLogic
         try {
             Schema::drop('comment_' . $aQuestionId);
             Schema::drop('answers_' . $aQuestionId);
+            Answers::where('question_id', $aQuestionId)->delete();
             Choices::where('question_id', $aQuestionId)->delete();
             Questions::where('id', $aQuestionId)->delete();
             DB::commit();
