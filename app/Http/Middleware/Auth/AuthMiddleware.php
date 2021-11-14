@@ -17,7 +17,8 @@ class AuthMiddleware
     {
         // requestしてきたアクション名をセッションにセット
         session(array(
-            'redirectUrl' => $_SERVER['REDIRECT_URL'],
+            // 'redirectUrl' => $_SERVER['REDIRECT_URL'],
+            'redirectUrl' => $request->path(),
         ));
 
         // URLハッシュがある場合はセットする
